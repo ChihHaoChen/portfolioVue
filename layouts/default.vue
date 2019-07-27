@@ -1,8 +1,9 @@
 <template>
-  <v-app> 
-    <TheHeader :show="displaySidenav"
-      @close="displaySidenav=false"/>
-    <TheSidenav @sidenavToggle="displaySidenav = !displaySidenav"/>
+  <v-app class="green lighten-4"> 
+    <!-- <TheHeader :show="displaySidenav"
+      @close="displaySidenav=false"/> -->
+    <NavBar/>
+    <!-- <TheSidenav/> -->
       
     <nuxt/>
   </v-app>
@@ -11,11 +12,13 @@
 <script>
 import TheHeader from '@/components/Navigation/TheHeader'
 import TheSidenav from '@/components/Navigation/TheSidenav'
+import NavBar from '@/components/Navigation/NavBar'
 
 export default {
   components: {
     TheHeader,
-    TheSidenav
+    TheSidenav,
+    NavBar
   },
   data() {
     return {
