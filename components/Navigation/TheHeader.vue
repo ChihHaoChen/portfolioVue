@@ -24,6 +24,7 @@ export default {
   name: "TheHeader",
   components: {
     TheSideNavToggle
+
   }
 };
 </script>

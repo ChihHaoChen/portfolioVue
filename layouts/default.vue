@@ -4,25 +4,24 @@
       @close="displaySidenav=false"/> -->
     <NavBar/>
     <!-- <TheSidenav/> -->
-      
-    <nuxt/>
+
   </v-app>
 </template>
 
 <script>
-import TheHeader from '@/components/Navigation/TheHeader'
-import TheSidenav from '@/components/Navigation/TheSidenav'
+// import TheHeader from '@/components/Navigation/TheHeader'
+// import TheSidenav from '@/components/Navigation/TheSidenav'
 import NavBar from '@/components/Navigation/NavBar'
 
 export default {
   components: {
-    TheHeader,
-    TheSidenav,
+    // TheHeader,
+    // TheSidenav,
     NavBar
   },
   data() {
     return {
-      displaySidenav: true
+      // displaySidenav: true
     }
   }
 }
