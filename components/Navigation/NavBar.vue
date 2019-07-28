@@ -1,7 +1,7 @@
 <template>
   <nav>
     <!-- <v-toolbar flat v-if="topHeader" app class="the-header" > -->
-      <v-container align-center justify-center fluid class="top-container">
+      <v-container v-if="topHeader" align-center justify-center fluid class="top-container" hidden-lg-and-up>
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" column align-center justify-center>
             <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
@@ -29,9 +29,10 @@
         <v-layout column align-end flat v-if="drawer">
           <div class="navigation-items">
             <ul class="nav-list">   
-            <li class="nav-item"><nuxt-link to="/projects">Projects</nuxt-link></li>
-            <li class="nav-item"><nuxt-link to="/publications">Publications</nuxt-link></li>
-            <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
+            <li class="nav-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
+            <li class="nav-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
+            <li class="nav-item"><nuxt-link to="/cv">MY CV</nuxt-link></li>
+            <li class="nav-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
             </ul>
           </div>
         </v-layout>
@@ -41,11 +42,10 @@
 </template>
 
 <script>
-import { mdiGithubBox } from "@mdi/js"
 
 export default {
+  name: "NavBar",
   data()  {
-    mdiGithubBox
     return {
       drawer: false,
       topHeader: true
@@ -64,6 +64,7 @@ export default {
     margin: 0;
     padding: 0;
   }
+
   .text-under-avatar  {
     position: relative;
     padding: 1em 0;
@@ -72,12 +73,14 @@ export default {
     text-align: center;
     color: white;
   }
+
   .nav-list {
   list-style: none;
   padding: 0 12.5px;
   margin: 0;
   text-align: right;
   }
+
   .nav-item {
   margin: 20px 0;
   }
@@ -97,7 +100,6 @@ export default {
     padding: 12.5px 12.5px;
     color: white;
   }
-
 
 </style>
 
