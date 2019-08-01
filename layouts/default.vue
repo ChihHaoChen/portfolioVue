@@ -1,5 +1,5 @@
 <template>
-  <v-app class="green lighten-4"> 
+  <v-app class="grey lighten-4"> 
     
     <NavBar/>
     <TheSidenav/>>
