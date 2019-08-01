@@ -1,21 +1,19 @@
 <template>
-  <v-app class="grey lighten-4"> 
-    <!-- <TheHeader :show="displaySidenav"
-      @close="displaySidenav=false"/> -->
+  <v-app class="green lighten-4"> 
+    
     <NavBar/>
-    <TheSidenav/>
-
+    <TheSidenav/>>
+      
+    <nuxt/>
   </v-app>
 </template>
 
 <script>
-// import TheHeader from '@/components/Navigation/TheHeader'
 import TheSidenav from '@/components/Navigation/TheSidenav'
 import NavBar from '@/components/Navigation/NavBar'
 
 export default {
   components: {
-    // TheHeader,
     TheSidenav,
     NavBar
   },
