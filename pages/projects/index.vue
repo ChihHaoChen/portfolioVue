@@ -8,26 +8,29 @@
           <div style="margin: 0 0 0 68px;" class="bold">{{schedule.title}}</div>
           <!-- <div style="margin: 0 0 0 68px">{{schedule.description}}</div> -->
           <v-container
-            class="pa-2"
+            class="card-layout"
             fluid
-            grid-list-md
           >
-          <v-layout class="card-layout" column>
-            <v-flex xs12>
-              <v-card flat class="card-item" width=640 :color="schedule.color" column>
-                <v-flex xs6>
-                  <v-list-item three-line>
-                    <v-list-item-content class="align-self-start">
-                      <v-list-item-title
-                        class="headline mb-2"
-                        v-text="schedule.title"
-                      ></v-list-item-title>
-
-                      <v-list-item-subtitle v-text="schedule.artist"></v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
+            <v-card flat class="card-item" width=640 column>
+              <v-layout row wrap>
+                <v-flex xs12 md6>
+                  <div>
+                    {{schedule.title}}
+                  </div>
+                  <div>
+                    {{schedule.description}}
+                  </div>
+                  <div>
+                    {{schedule.summary}}
+                  </div>
+                  <div class="text-center">
+                    <v-btn rounded color="primary" dark>Details</v-btn>
+                  </div>
+                  <p>
+                    Technologies
+                  </p>
                 </v-flex>   
-                <v-flex xs6>  
+                <v-flex xs12 md6>  
                   <v-list-item-avatar
                     size="125"
                     tile
@@ -35,9 +38,8 @@
                     <v-img :src="schedule.src"></v-img>
                   </v-list-item-avatar>
                 </v-flex>
-              </v-card>
-            </v-flex>
-          </v-layout>
+              </v-layout>
+            </v-card>
           </v-container>
         </li>
       </ul>
@@ -55,12 +57,12 @@ export default {
       {
         start: "2017",
         end: "2019",
-        title: "test",
-        description: "This is a test",
+        title: "Title",
+        description: "This is description",
         color: '#1F7087',
         src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-        title: 'Supermodel',
-        artist: 'Foster the People'
+        artist: 'Foster the People',
+        summary: 'Summary1'
         
       },
        {
@@ -70,8 +72,8 @@ export default {
         description: "This is a test2",
         color: '#952175',
         src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding'
+        artist: 'Ellie Goulding',
+        summary: 'Summary2'
       },
       
       ],
@@ -80,21 +82,7 @@ export default {
         end: "2019",
       title: "test",
       t: '1em'
-      },
-      items: [
-        {
-          color: '#1F7087',
-          src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-          title: 'Supermodel',
-          artist: 'Foster the People',
-        },
-        {
-          color: '#952175',
-          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
-        },
-      ],
+      }
     }
 
   },
@@ -167,6 +155,7 @@ export default {
 }
 .card-item  {
   font-size: 20px;
+  background-color: white
 }
 </style>
 
