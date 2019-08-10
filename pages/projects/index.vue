@@ -1,46 +1,59 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="timeline-wrapper"> 
-      <ul class="StepProgress"> 
-        <li  v-for="schedule in schedules" class="StepProgress-item" v-bind:class="'is-done'">
-          <div class="bold time">{{`${schedule.start} - ${schedule.end}`}} </div> 
-          <div style="margin: 0 0 0 68px;" class="bold">{{schedule.title}}</div>
-          <!-- <div style="margin: 0 0 0 68px">{{schedule.description}}</div> -->
-          <v-container
-            class="card-layout"
-            fluid
-          >
-            <v-card flat class="card-item" width=640 column>
-              <v-layout row wrap>
-                <v-flex xs12 md6>
+    <v-flex xs12 sm12 md12 >
+      <div class="timeline-wrapper" > 
+      <ul class="StepProgress" > 
+        <li class="StepProgress-item" v-for="(schedule, i) in schedules" v-bind:class="'is-done'" :key="i">
+        <div class="bold time">{{`${schedule.start} - ${schedule.end}`}} </div> 
+        <v-container class="card-layout" fluid>
+          <v-card flat class="card-item" width=640 column>
+            <v-layout row wrap>
+              <v-flex xs12 md6>
+                <div>
+                  {{schedule.title}}
+                </div>
+                <div>
+                  {{schedule.description}}
+                </div>
+                <div> 
+                  <v-list dense>
+                    <v-header>
+                      {{schedule.summary.header}}
+                    </v-header>
+                    <v-list-item  v-for="(point, i) in schedule.summary.points" :key="i">
+                      <div>
+                      <v-list-title-content>
+                        {{point.text}}
+                      </v-list-title-content>
+                      </div>
+                    </v-list-item>
+                  </v-list>
+                </div>
+                <div class="text-center">
+                  <v-btn rounded color="green" dark>Details</v-btn>
+                </div>
+                <div>
+                  Technologies
                   <div>
-                    {{schedule.title}}
+                    <v-list-item  v-for="(technology, i) in schedule.technologies" :key="i">
+                      <v-chip label color="green" dark>
+                        {{technology.item}}
+                      </v-chip>
+                    </v-list-item> 
                   </div>
-                  <div>
-                    {{schedule.description}}
-                  </div>
-                  <div>
-                    {{schedule.summary}}
-                  </div>
-                  <div class="text-center">
-                    <v-btn rounded color="primary" dark>Details</v-btn>
-                  </div>
-                  <p>
-                    Technologies
-                  </p>
-                </v-flex>   
-                <v-flex xs12 md6>  
-                  <v-list-item-avatar
-                    size="125"
-                    tile
-                  >
-                    <v-img :src="schedule.src"></v-img>
-                  </v-list-item-avatar>
-                </v-flex>
-              </v-layout>
-            </v-card>
-          </v-container>
+                </div>
+              </v-flex>   
+              <v-flex xs12 md6>  
+                <v-list-item-avatar
+                  size="125"
+                  tile
+                >
+                  <v-img :src="schedule.src"></v-img>
+                </v-list-item-avatar>
+              </v-flex>
+            </v-layout>
+          </v-card>
+        </v-container>
         </li>
       </ul>
       </div>
@@ -62,18 +75,37 @@ export default {
         color: '#1F7087',
         src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
         artist: 'Foster the People',
-        summary: 'Summary1'
+        summary: {
+          header: "Summary Header1",
+          points: [ {text: "This is point1."}, 
+                    {text: "This is point2."}]
+        },
+        technologies: [
+          { item: "NodeJS"},
+          { item: "VueJS"},
+          { item: "Swift"}
+        ]
         
       },
        {
         start: "2019",
         end: "2020",
         title: "test2",
-        description: "This is a test2",
+        description: "This is the description for the card2",
         color: '#952175',
         src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
         artist: 'Ellie Goulding',
-        summary: 'Summary2'
+        summary: {
+          header: "Summary Header2",
+          points: [ {text: "This is point1."}, 
+                    {text: "This is point2."}]
+        },
+        technologies: [
+          { item: "NodeJS"},
+          { item: "VueJS"},
+          { item: "Swift"},
+          { item: "C"}
+        ]
       },
       
       ],
