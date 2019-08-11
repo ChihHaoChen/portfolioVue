@@ -15,11 +15,16 @@
         </v-layout> 
         <v-divider dark></v-divider>
         <v-layout row align-center justify-center class="icon-bar">
-          <v-icon dark large>
-            email
-          </v-icon>
-          <img src="@/images/linkedin-box.png" >
-          <img src="@/images/github-box.png" >
+          <a href="mailto:chao700716@gmail.com">
+            <img src="@/images/email.png">
+          </a>
+          <a href="https://www.linkedin.com/in/chih-hao-chen-13583369/">
+            <img src="@/images/linkedin-box.png">
+          </a>
+          <a href=https://github.com/ChihHaoChen>
+            <img src="@/images/github-box.png" >
+          </a>
+          
           <v-spacer></v-spacer>
           <v-icon dark large @click="drawer = !drawer">
           dashboard
@@ -49,6 +54,14 @@ export default {
     return {
       drawer: false,
       topHeader: true
+    }
+  },
+  methods:  {
+    gitHubLink()  {
+
+    },
+    linkedInLink()  {
+      
     }
   }
 }

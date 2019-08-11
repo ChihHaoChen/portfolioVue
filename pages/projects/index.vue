@@ -21,6 +21,7 @@ export default {
         color: '#1F7087',
         src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
         artist: 'Foster the People',
+        detailLink: 'https://github.com/ChihHaoChen',
         summary: {
           header: "Summary Header1",
           points: [ {text: "This is point1."}, 
@@ -40,6 +41,7 @@ export default {
         color: '#952175',
         src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
         artist: 'Ellie Goulding',
+        detailLink:"https://www.linkedin.com/in/chih-hao-chen-13583369/",
         summary: {
           header: "Summary Header2",
           points: [ {text: "This is point1."}, 

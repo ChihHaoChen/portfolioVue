@@ -8,7 +8,7 @@
         <v-container class="card-layout" fluid>
           <v-card flat class="card-item" width=640 column>
             <v-layout row wrap>
-              <v-flex xs12 md6>
+              <v-flex xs12 sm6 md6>
                 <div>
                   {{project.title}}
                 </div>
@@ -30,7 +30,7 @@
                   </v-list>
                 </div>
                 <div class="text-center">
-                  <v-btn rounded color="green" dark>Details</v-btn>
+                  <v-btn rounded color="green" dark :href=project.detailLink>Details</v-btn>
                 </div>
                 <div>
                   Technologies
