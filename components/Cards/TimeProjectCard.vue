@@ -9,7 +9,7 @@
           <v-card flat class="card-item" width=640 column>
             <v-layout row wrap>
               <v-flex xs12 sm6 md6>
-                <div>
+                <div class=card-title>
                   {{project.title}}
                 </div>
                 <div>
@@ -17,7 +17,7 @@
                 </div>
                 <div> 
                   <v-list dense>
-                    <v-header>
+                    <v-header class=summary-header>
                       {{project.summary.header}}
                     </v-header>
                     <v-list-item  v-for="(point, i) in project.summary.points" :key="i">
@@ -30,13 +30,13 @@
                   </v-list>
                 </div>
                 <div class="text-center">
-                  <v-btn rounded color="green" dark :href=project.detailLink>Details</v-btn>
+                  <v-btn class=detail-btn :href=project.detailLink color='#006400'>Details</v-btn>
                 </div>
-                <div>
-                  Technologies
+                <div class=tech-title>
+                  TECHNOLOGIES
                   <div>
                     <v-list-item  v-for="(technology, i) in project.technologies" :key="i">
-                      <v-chip label color="green" dark>
+                      <v-chip label class=tech-text>
                         {{technology.item}}
                       </v-chip>
                     </v-list-item> 
@@ -132,7 +132,37 @@ export default {
 }
 .card-item  {
   font-size: 20px;
-  background-color: white
+  background-color: white;
+  padding-left: 20px;
 }
+
+.card-title {
+  font-size: 32px;
+  font-family: 'Blinker'
+}
+
+.summary-header {
+  font-size: 24px;
+  font-family: 'Blinker'
+}
+
+.tech-title {
+  font-size: 20px;
+  font-family: 'Blinker';
+  color: grey;
+}
+
+.tech-text  {
+  font-size: 14px;
+  font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
+  color: white;
+  background-color:  #3CB371
+}
+
+.detail-btn {
+  font-size: 16px;
+  color:  white;
+}
+
 </style>
 

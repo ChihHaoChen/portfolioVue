@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-layout column justify-center align-center>
     <TimeProjectCard v-bind:projects="projects"/>
-  </div>
+  </v-layout>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
       {
         start: "2017",
         end: "2019",
-        title: "Title",
+        title: "Projects",
         description: "This is description",
         color: '#1F7087',
         src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',

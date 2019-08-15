@@ -24,3 +24,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  html  {
+    font-family: 'Blinker', sans-serif;
+  }
+
+  body  {
+    margin: 0
+  }
+</style>>

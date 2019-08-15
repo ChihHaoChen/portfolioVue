@@ -5,7 +5,7 @@
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" column align-center justify-center>
             <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
-              <img src="@/images/avatar.jpg" alt="">
+              <img src="@/images/avatar.png" alt="">
             </v-avatar>
             <p class="text-under-avatar" column align-center justify-center>
               Chih-Hao Chen <br/>
@@ -71,7 +71,7 @@ export default {
   .top-container {
     width: 100%;
     align-items: center;
-    background-color: rgb(77, 179, 77);
+    background-color:	#006400;
     box-sizing: border-box;
     padding: 0 0px;
     margin: 0;
