@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-navigation-drawer app v-model= "show" hidden-sm-and-down>
+    <v-navigation-drawer app hidden-md-and-down>
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" column align-center justify-center>

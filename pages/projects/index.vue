@@ -1,7 +1,7 @@
 <template>
-  <v-layout column justify-center align-center>
-    <TimeProjectCard v-bind:projects="projects"/>
-  </v-layout>
+  <div class=project-card>
+    <TimeProjectCard :projects="projects"/>
+  </div>
 </template>
 
 <script>
@@ -25,7 +25,9 @@ export default {
         summary: {
           header: "Summary Header1",
           points: [ {text: "This is point1."}, 
-                    {text: "This is point2."}]
+                    {text: "This is point2."},
+                    {text: "This is point3."},
+                    {text: "This is point4."}]
         },
         technologies: [
           { item: "NodeJS"},
@@ -60,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
-
+.project-card {
+  align-items: center;
+  position: relative;
+}
 </style>
 

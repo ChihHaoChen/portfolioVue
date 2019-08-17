@@ -1,8 +1,8 @@
 <template>
-  <v-app class="grey lighten-4"> 
+  <v-app class="white lighten-4"> 
     
     <NavBar/>
-    <TheSidenav/>>
+    <TheSidenav/>
       
     <nuxt/>
   </v-app>

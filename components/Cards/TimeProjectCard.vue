@@ -20,11 +20,9 @@
                     <v-header class=summary-header>
                       {{project.summary.header}}
                     </v-header>
-                    <v-list-item  v-for="(point, i) in project.summary.points" :key="i">
-                      <div>
-                      <v-list-title-content>
+                    <v-list-item v-for="(point, i) in project.summary.points" :key="i">
+                      <div class=summary-item>
                         {{point.text}}
-                      </v-list-title-content>
                       </div>
                     </v-list-item>
                   </v-list>
@@ -35,7 +33,7 @@
                 <div class=tech-title>
                   TECHNOLOGIES
                   <div>
-                    <v-list-item  v-for="(technology, i) in project.technologies" :key="i">
+                    <v-list-item v-for="(technology, i) in project.technologies" :key="i">
                       <v-chip label class=tech-text>
                         {{technology.item}}
                       </v-chip>
@@ -48,7 +46,7 @@
                   size="125"
                   tile
                 >
-                  <v-img :src="project.src"></v-img>
+                  <v-img aspect-ratio="1" :src="project.src"></v-img>
                 </v-list-item-avatar>
               </v-flex>
             </v-layout>
@@ -70,14 +68,12 @@ export default {
 </script>
 
 <style scoped>
-.bold{font-weight:bold; color:blue}
-.time{position:absolute; left:-115px;}
+.bold{font-weight:bold; color: black}
+.time{position:absolute; left:-80px; top:-10px;}
 .timeline-wrapper {
-  padding-left:80px;
-  min-width: 800px;
-  font-family: 'Helvetica';
+  min-width: 400px;
+  font-family: 'Blinker';
   font-size: 20px;
-  /*border: 1px solid #CCC;*/
 }
 .StepProgress {
   position: relative;
@@ -122,7 +118,6 @@ export default {
   color: #FFF;
   text-align: center;
   border: 2px solid green;
-  background-color: green;
 }
 .StepProgress strong {
   display: block;
@@ -143,7 +138,12 @@ export default {
 
 .summary-header {
   font-size: 24px;
-  font-family: 'Blinker'
+  font-family: 'Blinker';
+}
+
+.summary-item {
+  color: grey;
+  padding-left: 20px;
 }
 
 .tech-title {
@@ -156,7 +156,8 @@ export default {
   font-size: 14px;
   font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
   color: white;
-  background-color:  #3CB371
+  background-color:  #3CB371;
+  text-align: center;
 }
 
 .detail-btn {

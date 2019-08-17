@@ -53,7 +53,7 @@ export default {
   data()  {
     return {
       drawer: false,
-      topHeader: true
+      topHeader: false
     }
   },
   methods:  {
