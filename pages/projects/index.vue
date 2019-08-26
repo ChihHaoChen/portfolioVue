@@ -1,7 +1,8 @@
 <template>
-  <div class=project-card>
+  <v-content class=project-card> 
+    <!-- Use v-content to get dynamic layout of TimeProjectCard with drawer-->
     <TimeProjectCard :projects="projects"/>
-  </div>
+  </v-content>
 </template>
 
 <script>
@@ -63,8 +64,8 @@ export default {
 
 <style scoped>
 .project-card {
-  align-items: center;
-  position: relative;
+  margin-top: 100px;
+  align-self: center;
 }
 </style>
 

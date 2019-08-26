@@ -14,32 +14,28 @@
           </v-flex>
         </v-layout> 
         <v-divider dark></v-divider>
-          <v-layout column align-start flat>
-            <div class="navigation-draw-items">
-              <ul class="nav-drawer-list">   
-              <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
-              <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
-              <li class="nav-drawer-item"><nuxt-link to="/cv">MY CV</nuxt-link></li>
-              <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
-              </ul>
-            </div>
-          </v-layout>
-          <v-divider dark></v-divider>
-          <v-layout row align-center justify-center class="icon-bar">
-            <a href="mailto:chao700716@gmail.com">
-              <!-- <v-icon dark large>
-              email
-              </v-icon>  -->
-              <img src="@/images/email.png">
-            </a>
-            <a href="https://www.linkedin.com/in/chih-hao-chen-13583369/">
-              <img src="@/images/linkedin-box.png">
-            </a>
-            <a href=https://github.com/ChihHaoChen>
-              <img src="@/images/github-box.png" >
-            </a>
-            <v-spacer></v-spacer>
-            
+        <v-layout column align-start flat>
+          <div class="navigation-draw-items">
+            <ul class="nav-drawer-list">   
+            <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/cv">MY CV</nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
+            </ul>
+          </div>
+        </v-layout>
+        <v-divider dark></v-divider>
+        <v-layout row align-center justify-center class="icon-bar">
+          <a href="mailto:chao700716@gmail.com">
+            <img src="@/images/email.png">
+          </a>
+          <a href="https://www.linkedin.com/in/chih-hao-chen-13583369/">
+            <img src="@/images/linkedin-box.png">
+          </a>
+          <a href=https://github.com/ChihHaoChen>
+            <img src="@/images/github-box.png" >
+          </a>
+          <v-spacer></v-spacer>            
         </v-layout>
       </v-container>
     </v-navigation-drawer>
@@ -53,6 +49,16 @@ export default {
     show: {
       type: Boolean,
       default: true
+    }
+  },
+  methods: {
+    debug(event)  {
+      console.log("Hi, there!")
+    },
+    sendToggleMessage() {
+      
+      this.$root.$emit('drawerToggle', this.show)
+      
     }
   }
 }
