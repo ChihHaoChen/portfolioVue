@@ -1,6 +1,6 @@
 <template>
   <v-app class="white lighten-4"> 
-    <TheSidenav/>
+    <TheSidenav ref="theSideNav"/>
     <NavBar/>
     
       

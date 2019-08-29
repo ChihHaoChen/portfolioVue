@@ -1,15 +1,17 @@
 <template>
   <nav>
-    <v-navigation-drawer app hidden-md-and-down>
+    <v-navigation-drawer app hidden-md-and-down v-model="sideNav">
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" column align-center justify-center>
             <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
               <img src="@/images/avatar.png" alt="">
             </v-avatar>
+          </v-flex>
+          <v-flex class="mt-5" column align-center justify-center>
             <p class="text-under-avatar" column align-center justify-center>
-              Chih-Hao Chen <br/>
-              Software Engineer
+              CHIH-HAO CHEN <br/>
+              SOFTWARE ENGINEER
             </p>
           </v-flex>
         </v-layout> 
@@ -35,7 +37,7 @@
           <a href=https://github.com/ChihHaoChen>
             <img src="@/images/github-box.png" >
           </a>
-          <v-spacer></v-spacer>            
+          <v-spacer></v-spacer>      
         </v-layout>
       </v-container>
     </v-navigation-drawer>
@@ -51,13 +53,30 @@ export default {
       default: true
     }
   },
-  methods: {
-    debug(event)  {
-      console.log("Hi, there!")
+  data: () => ({
+      isMobile: false,
+    }),
+
+    beforeDestroy () {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', this.onResize, { passive: true })
+      }
     },
-    sendToggleMessage() {
-      
-      this.$root.$emit('drawerToggle', this.show)
+  computed: {
+    sideNav:  {
+      get() {
+        return this.show
+      }
+    }
+  },
+  mounted() {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
+  methods:  {
+    onResize()  {
+      this.isMobile = window.innerWidth < 1260
+      this.$bus.$emit('controlHeader', this.isMobile)
       
     }
   }

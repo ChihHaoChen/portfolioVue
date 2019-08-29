@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-container v-if="topHeader" align-center justify-center fluid class="top-container" hidden-lg-and-up>
+    <v-container v-if="topHeader" align-center justify-center fluid class="top-container">
       <v-layout column align-center justify-center>
         <v-flex class="mt-5" column align-center justify-center>
           <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
@@ -61,8 +61,9 @@ export default {
     }
   },
   mounted()  {
-    this.$root.$on('drawerToggle', (toggle) => {
-      console.log("toggle", toggle)
+    this.$bus.$on('controlHeader', (sideBarOpen)=> {
+      console.log(sideBarOpen)
+      this.topHeader = sideBarOpen;
     });
   }
 }
