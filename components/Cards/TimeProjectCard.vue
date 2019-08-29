@@ -6,7 +6,7 @@
         <li class="StepProgress-item" v-for="(project, i) in projects" v-bind:class="'is-done'" :key="i">
         <div class="bold time">{{`${project.start} - ${project.end}`}} </div> 
         <v-container class="card-layout" fluid>
-          <v-card flat class="card-item" width=640 column>
+          <v-card flat class="card-item" width=900 column>
             <v-layout row wrap>
               <v-flex xs12 sm6 md6>
                 <div class=card-title>
@@ -17,9 +17,9 @@
                 </div>
                 <div> 
                   <v-list dense>
-                    <v-header class=summary-header>
+                    <v-subheader class=summary-header>
                       {{project.summary.header}}
-                    </v-header>
+                    </v-subheader>
                     <v-list-item v-for="(point, i) in project.summary.points" :key="i">
                       <div class=summary-item>
                         {{point.text}}
@@ -139,6 +139,7 @@ export default {
 .summary-header {
   font-size: 24px;
   font-family: 'Blinker';
+  padding-left: 0px;
 }
 
 .summary-item {
@@ -158,11 +159,13 @@ export default {
   color: white;
   background-color:  #3CB371;
   text-align: center;
+  margin-left: 0px;
 }
 
 .detail-btn {
   font-size: 16px;
   color:  white;
+  margin-left: 0px;
 }
 
 </style>

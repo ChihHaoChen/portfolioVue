@@ -1,14 +1,14 @@
 <template>
   <nav>
-    <v-navigation-drawer app hidden-md-and-down v-model="sideNav">
+    <v-navigation-drawer app hidden-md-and-down>
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
-          <v-flex class="mt-5" column align-center justify-center>
+          <v-flex class="mt-5" align-center justify-center>
             <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
               <img src="@/images/avatar.png" alt="">
             </v-avatar>
           </v-flex>
-          <v-flex class="mt-5" column align-center justify-center>
+          <v-flex align-center justify-center>
             <p class="text-under-avatar" column align-center justify-center>
               CHIH-HAO CHEN <br/>
               SOFTWARE ENGINEER
@@ -63,11 +63,6 @@ export default {
       }
     },
   computed: {
-    sideNav:  {
-      get() {
-        return this.show
-      }
-    }
   },
   mounted() {
     this.onResize()

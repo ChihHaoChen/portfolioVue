@@ -2,13 +2,15 @@
   <nav>
     <v-container v-if="topHeader" align-center justify-center fluid class="top-container">
       <v-layout column align-center justify-center>
-        <v-flex class="mt-5" column align-center justify-center>
+        <v-flex class="mt-5" align-center justify-center>
           <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
             <img src="@/images/avatar.png" alt="">
           </v-avatar>
+        </v-flex>
+        <v-flex align-center justify-center>
           <p class="text-under-avatar" column align-center justify-center>
-            Chih-Hao Chen <br/>
-            Software Engineer
+            CHIH-HAO CHEN <br/>
+            SOFTWARE ENGINEER
           </p>
         </v-flex>
       </v-layout> 
