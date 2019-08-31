@@ -16,16 +16,11 @@
                   {{project.description}}
                 </div>
                 <div> 
-                  <v-list dense>
-                    <v-subheader class=summary-header>
-                      {{project.summary.header}}
-                    </v-subheader>
-                    <v-list-item v-for="(point, i) in project.summary.points" :key="i">
-                      <div class=summary-item>
-                        {{point.text}}
-                      </div>
-                    </v-list-item>
-                  </v-list>
+                  <ul class=summaryList>
+                    <li v-for="point in project.summary.points" :key="point.textid" class=summaryPoints>
+                      {{ point.text }}
+                    </li>
+                  </ul>
                 </div>
                 <div class="text-center">
                   <v-btn class=detail-btn :href=project.detailLink color='#006400'>Details</v-btn>
@@ -33,21 +28,14 @@
                 <div class=tech-title>
                   TECHNOLOGIES
                   <div>
-                    <v-list-item v-for="(technology, i) in project.technologies" :key="i">
-                      <v-chip label class=tech-text>
-                        {{technology.item}}
-                      </v-chip>
-                    </v-list-item> 
+                  <v-chip label v-for="(technology, i) in project.technologies" :key="i" class=tech-text>
+                    {{technology.item}}
+                  </v-chip>
                   </div>
                 </div>
               </v-flex>   
-              <v-flex xs12 md6>  
-                <v-list-item-avatar
-                  size="125"
-                  tile
-                >
-                  <v-img aspect-ratio="1" :src="project.src"></v-img>
-                </v-list-item-avatar>
+              <v-flex> 
+                <v-img aspect-ratio="1" :src="project.src"></v-img>
               </v-flex>
             </v-layout>
           </v-card>
@@ -60,7 +48,6 @@
 </template>
 
 <script>
-
 export default {
   name: "TimeProjectCard",
   props: ['projects']
@@ -136,17 +123,6 @@ export default {
   font-family: 'Blinker'
 }
 
-.summary-header {
-  font-size: 24px;
-  font-family: 'Blinker';
-  padding-left: 0px;
-}
-
-.summary-item {
-  color: grey;
-  padding-left: 20px;
-}
-
 .tech-title {
   font-size: 20px;
   font-family: 'Blinker';
@@ -159,6 +135,8 @@ export default {
   color: white;
   background-color:  #3CB371;
   text-align: center;
+  border-radius: 5px;
+  margin-inline: 5px;
   margin-left: 0px;
 }
 
@@ -166,6 +144,23 @@ export default {
   font-size: 16px;
   color:  white;
   margin-left: 0px;
+  border-radius: 5px;
+}
+
+.summaryList {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1.2em;
+    text-indent: 5px;
+}
+
+.summaryPoints::before  {
+  content: "\25B8";
+  display: block;
+  float: left;
+  width: 1.2em;
+  color: #006400;
+  padding-right: 5px;
 }
 
 </style>
