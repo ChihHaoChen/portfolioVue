@@ -50,7 +50,12 @@
 <script>
 export default {
   name: "TimeProjectCard",
-  props: ['projects']
+  props: {
+    projects: {
+      type: Array,
+      required: true
+    }
+  }
 }
 </script>
 

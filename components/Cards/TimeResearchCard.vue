@@ -50,7 +50,12 @@
 <script>
 export default {
   name: "TimeResearchCard",
-  props: ['publications']
+  props: {
+    publications: {
+      type: Array,
+      required: true
+    }
+  }
 }
 </script>
 

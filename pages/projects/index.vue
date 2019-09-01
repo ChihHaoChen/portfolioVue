@@ -10,9 +10,10 @@ export default {
   components: {
     TimeProjectCard
   },
-  data() {
-    return  {
-      projects: [
+  asyncData(context)  {
+    return new Promise((resolve, reject) => {
+      resolve({
+        projects: [
       {
         start: "2017",
         end: "2019",
@@ -56,9 +57,16 @@ export default {
           { item: "C"}
         ]
       }]
-    }
+      })
+    })
+    .then(data => {
+      return data
+    })
+    .catch(err => {
+      context.error(new Error())
+    });
   }
-}
+};
 </script>
 
 <style scoped>
