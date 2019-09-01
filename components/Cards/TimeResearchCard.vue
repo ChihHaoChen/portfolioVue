@@ -3,39 +3,39 @@
     <v-flex xs12 sm12 md12 >
       <div class="timeline-wrapper" > 
       <ul class="StepProgress" > 
-        <li class="StepProgress-item" v-for="(project, i) in projects" v-bind:class="'is-done'" :key="i">
-        <div class="bold time">{{`${project.start} - ${project.end}`}} </div> 
+        <li class="StepProgress-item" v-for="(publication, i) in publications" v-bind:class="'is-done'" :key="i">
+        <div class="bold time">{{`${publication.start} - ${publication.end}`}} </div> 
         <v-container class="card-layout" fluid>
           <v-card flat class="card-item" width=600 column>
             <v-layout row wrap>
               <v-flex xs12 sm12 md6>
                 <div class=card-title>
-                  {{project.title}}
+                  {{publication.title}}
                 </div>
                 <div>
-                  {{project.description}}
+                  {{publication.description}}
                 </div>
                 <div> 
                   <ul class=summaryList>
-                    <li v-for="point in project.summary.points" :key="point.textid" class=summaryPoints>
+                    <li v-for="point in publication.summary.points" :key="point.textid" class=summaryPoints>
                       {{ point.text }}
                     </li>
                   </ul>
                 </div>
                 <div class="text-center">
-                  <v-btn class=detail-btn :href=project.detailLink color='#006400'>Details</v-btn>
+                  <v-btn class=detail-btn :href=publication.detailLink color='#006400'>Details</v-btn>
                 </div>
                 <div class=tech-title>
                   TECHNOLOGIES
                   <div>
-                  <v-chip label v-for="(technology, i) in project.technologies" :key="i" class=tech-text>
+                  <v-chip label v-for="(technology, i) in publication.technologies" :key="i" class=tech-text>
                     {{technology.item}}
                   </v-chip>
                   </div>
                 </div>
               </v-flex>   
               <v-flex xs12 sm12 md6> 
-                <v-img aspect-ratio="1" :src="project.src"></v-img>
+                <v-img aspect-ratio="1" :src="publication.src"></v-img>
               </v-flex>
             </v-layout>
           </v-card>
@@ -49,8 +49,8 @@
 
 <script>
 export default {
-  name: "TimeProjectCard",
-  props: ['projects']
+  name: "TimeResearchCard",
+  props: ['publications']
 }
 </script>
 

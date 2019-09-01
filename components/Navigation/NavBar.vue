@@ -64,7 +64,6 @@ export default {
   },
   mounted()  {
     this.$bus.$on('controlHeader', (sideBarOpen)=> {
-      console.log(sideBarOpen)
       this.topHeader = sideBarOpen;
     });
   }

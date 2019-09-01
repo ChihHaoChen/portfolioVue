@@ -1,6 +1,5 @@
 <template>
   <v-content class=project-card> 
-    <!-- Use v-content to get dynamic layout of TimeProjectCard with drawer-->
     <TimeProjectCard :projects="projects"/>
   </v-content>
 </template>
@@ -42,7 +41,7 @@ export default {
         title: "test2",
         description: "This is the description for the card2",
         color: '#952175',
-        src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+        src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
         artist: 'Ellie Goulding',
         detailLink:"https://www.linkedin.com/in/chih-hao-chen-13583369/",
         summary: {
