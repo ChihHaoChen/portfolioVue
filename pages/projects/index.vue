@@ -10,9 +10,6 @@ export default {
   components: {
     TimeProjectCard
   },
-  created() {
-    return this.$store.counter
-  },
   computed: {
     loadedProjects()  {
       return this.$store.getters.loadedProjects
