@@ -7,6 +7,7 @@
       <v-container class="timeline-wrapper" > 
       <ul class="StepProgress" > 
         <li class="StepProgress-item" v-bind:class="'is-done'">
+          <hr v-if="i!=0" class="card-divider"/>
           <div class="bold time">{{`${publication.start} - ${publication.end}`}}</div>     
           <v-container fluid class="card-layout">
             <v-layout row wrap>
@@ -40,7 +41,6 @@
                 <v-img aspect-ratio="1" :src="publication.src"></v-img>
               </v-flex>
             </v-layout>
-            <v-divider class="card-divider"/>
           </v-container>
         </li>
       </ul>
@@ -174,10 +174,18 @@ export default {
 }
 
 .card-divider {
-  padding-top: 2px;
-  background-color:  #3CB371;
-  border-color: #3CB371;
+  margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid  #006400;
+  width: 90%;
+  opacity: 0.6;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 50%;
+  position: relative;
+  top: 5px;
 }
-
 </style>
 
