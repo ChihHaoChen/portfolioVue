@@ -1,14 +1,16 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm12 md12 >
-      <div class="timeline-wrapper" > 
+  <v-container fluid>
+    <v-layout row wrap justify-space-between justify-center align-center 
+    v-for="(publication, i) in publications" 
+    :key="i"> 
+      <v-flex xs12 sm12 md12 lg12 xl12>
+      <v-container class="timeline-wrapper" > 
       <ul class="StepProgress" > 
-        <li class="StepProgress-item" v-for="(publication, i) in publications" v-bind:class="'is-done'" :key="i">
-        <div class="bold time">{{`${publication.start} - ${publication.end}`}} </div> 
-        <v-container class="card-layout" fluid>
-          <v-card flat class="card-item" width=600 column>
+        <li class="StepProgress-item" v-bind:class="'is-done'">
+          <div class="bold time">{{`${publication.start} - ${publication.end}`}}</div>     
+          <v-container fluid class="card-layout">
             <v-layout row wrap>
-              <v-flex xs12 sm12 md6>
+              <v-flex xs12 sm12 md12 lg6 xl6>
                 <div class=card-title>
                   {{publication.title}}
                 </div>
@@ -33,18 +35,20 @@
                   </v-chip>
                   </div>
                 </div>
-              </v-flex>   
-              <v-flex xs12 sm12 md6> 
+              </v-flex>
+              <v-flex xs12 sm12 md12 lg6 xl6> 
                 <v-img aspect-ratio="1" :src="publication.src"></v-img>
               </v-flex>
             </v-layout>
-          </v-card>
-        </v-container>
+            <v-divider class="card-divider"/>
+          </v-container>
         </li>
       </ul>
-      </div>
-    </v-flex>
-  </v-layout>
+      </v-container>
+      </v-flex>
+    </v-layout>
+        
+  </v-container>
 </template>
 
 <script>
@@ -61,9 +65,9 @@ export default {
 
 <style scoped>
 .bold{font-weight:bold; color: black}
-.time{position:absolute; left:-80px; top:-10px;}
+.time{position:absolute; left:-70px; top:-10px;}
 .timeline-wrapper {
-  min-width: 300px;
+  min-width: 400px;
   font-family: 'Blinker';
   font-size: 20px;
 }
@@ -111,11 +115,12 @@ export default {
   text-align: center;
   border: 2px solid green;
 }
+
 .StepProgress strong {
   display: block;
 }
 .card-layout  {
-  padding-left: 50px;
+  padding-left: 60px;
 }
 .card-item  {
   font-size: 20px;
@@ -166,6 +171,12 @@ export default {
   width: 1.2em;
   color: #006400;
   padding-right: 5px;
+}
+
+.card-divider {
+  padding-top: 2px;
+  background-color:  #3CB371;
+  border-color: #3CB371;
 }
 
 </style>

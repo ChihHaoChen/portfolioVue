@@ -19,6 +19,7 @@ export const actions = {
           publicationsArray.push({ ...response.data[key], id: key })
         }
         vuexContext.commit("setPublications", publicationsArray)
+        vuexContext.commit("setProjects", publicationsArray)
       })
       .catch(err => console.log("the err is", err))
   }
