@@ -1,9 +1,7 @@
 <template>
   <v-app class="white lighten-4"> 
     <TheSidenav ref="theSideNav"/>
-    <NavBar/>
-    
-      
+    <NavBar/>   
     <nuxt/>
   </v-app>
 </template>

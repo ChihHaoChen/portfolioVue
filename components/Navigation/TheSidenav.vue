@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <v-navigation-drawer app hidden-md-and-down>
+  <v-content>
+    <v-navigation-drawer app hidden-md-and-down :width="drawerWidth">
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" align-center justify-center>
@@ -41,7 +41,7 @@
         </v-layout>
       </v-container>
     </v-navigation-drawer>
-  </nav>
+  </v-content>
 </template>
 
 <script>
@@ -51,7 +51,8 @@ export default {
     show: {
       type: Boolean,
       default: true
-    }
+    },
+    drawerWidth: Number
   },
   data: () => ({
       isMobile: false,
@@ -71,7 +72,8 @@ export default {
   methods:  {
     onResize()  {
       this.isMobile = window.innerWidth < 1260
-      this.$bus.$emit('controlHeader', this.isMobile)
+        console.log(this.drawerWidth)
+        this.$bus.$emit('controlHeader', this.isMobile)
       
     }
   }

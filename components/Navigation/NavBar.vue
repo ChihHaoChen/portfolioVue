@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <v-container v-if="topHeader" align-center justify-center fluid class="top-container">
+  <v-content>
+    <v-container v-show="topHeader" fluid class="top-container">
       <v-layout column align-center justify-center>
         <v-flex class="mt-5" align-center justify-center>
           <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
@@ -24,8 +24,7 @@
         </a>
         <a href=https://github.com/ChihHaoChen>
           <img src="@/images/github-box.png" >
-        </a>
-        
+        </a>       
         <v-spacer></v-spacer>
         <v-icon dark large @click="drawer = !drawer">
         dashboard
@@ -43,7 +42,7 @@
         </div>
       </v-layout>
     </v-container>
-  </nav>
+  </v-content>
 </template>
 
 <script>

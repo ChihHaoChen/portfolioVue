@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-layout row wrap justify-space-between justify-center align-center 
+    <v-layout row justify-space-between justify-center align-center 
     v-for="(publication, i) in publications" 
     :key="i"> 
       <v-flex xs12 sm12 md12 lg12 xl12>
@@ -64,7 +64,6 @@ export default {
 </script>
 
 <style scoped>
-.bold{font-weight:bold; color: black}
 .time{position:absolute; left:-70px; top:-10px;}
 .timeline-wrapper {
   min-width: 400px;
@@ -74,17 +73,14 @@ export default {
 .StepProgress {
   position: relative;
   padding-left: 45px;
-  list-style: none;
-  
+  list-style: none;  
   -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
   transition: 2s;
 }
 .StepProgress-item {
-  
   position: relative;
   counter-increment: list;
 }
-
 .StepProgress-item::before {
   display: inline-block;
   content: '';
@@ -92,6 +88,7 @@ export default {
   left: 38px;
   height: 100%;
   width: 10px;
+  border-left: 2px solid green;
 }
 .StepProgress-item::after {
   content: '';
@@ -104,20 +101,10 @@ export default {
   border: 2px solid #CCC;
   border-radius: 50%;
   background-color: #FFF;
-}
-.StepProgress-item.is-done::before {
-  border-left: 2px solid green;
-}
-.StepProgress-item.is-done::after {
-  /*content: "?";*/
   font-size: 10px;
   color: #FFF;
   text-align: center;
   border: 2px solid green;
-}
-
-.StepProgress strong {
-  display: block;
 }
 .card-layout  {
   padding-left: 60px;
@@ -127,18 +114,15 @@ export default {
   background-color: white;
   padding-left: 20px;
 }
-
 .card-title {
   font-size: 32px;
   font-family: 'Blinker'
 }
-
 .tech-title {
   font-size: 20px;
   font-family: 'Blinker';
   color: grey;
 }
-
 .tech-text  {
   font-size: 14px;
   font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
@@ -149,21 +133,18 @@ export default {
   margin-inline: 5px;
   margin-left: 0px;
 }
-
 .detail-btn {
   font-size: 16px;
   color:  white;
   margin-left: 0px;
   border-radius: 5px;
 }
-
 .summaryList {
     list-style: none;
     margin-left: 0;
     padding-left: 1.2em;
     text-indent: 5px;
 }
-
 .summaryPoints::before  {
   content: "\25B8";
   display: block;
@@ -172,7 +153,6 @@ export default {
   color: #006400;
   padding-right: 5px;
 }
-
 .card-divider {
   margin-top: 10px;
   background-color: transparent;
@@ -186,6 +166,44 @@ export default {
   border-radius: 50%;
   position: relative;
   top: 5px;
+}
+
+@media all and (min-width:0px) and (max-width: 800px) {
+  .time{position:relative; left:0px; top:0px;}
+  .card-layout  {
+  padding-left: 0px;
+  }
+  .StepProgress {
+    position: relative;
+    padding-left: 0px;
+    padding-right: 0px;
+    list-style: none;  
+    -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
+    transition: 2s;
+  }
+  .StepProgress-item {
+    position: relative;
+    counter-increment: list;
+  }
+  .StepProgress-item::before {
+    visibility: hidden;
+  }
+  .StepProgress-item::after {
+    visibility: hidden;
+  }
+  .card-divider {
+    background-color: transparent;
+    border: 1px solid  #006400;
+    width: 100%;
+    opacity: 0.6;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 50%;
+    position: relative;
+    top: 5px;
+  }
 }
 </style>
 
