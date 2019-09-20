@@ -14,7 +14,6 @@ export const actions = {
     return axios
       .get(apiUrl)
       .then(response => {
-        console.log("data is", response.data)
         for (const key in response.data) {
           publicationsArray.push({ ...response.data[key], id: key })
         }

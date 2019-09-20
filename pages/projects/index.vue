@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .project-card {
-  margin-top: 100px;
+  margin-top: 0px;
   align-self: center;
 }
 </style>
