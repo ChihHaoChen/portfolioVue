@@ -72,7 +72,6 @@ export default {
   methods:  {
     onResize()  {
       this.isMobile = window.innerWidth < 1260
-        console.log(this.drawerWidth)
         this.$bus.$emit('controlHeader', this.isMobile)
       
     }

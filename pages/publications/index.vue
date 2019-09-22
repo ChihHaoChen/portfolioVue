@@ -9,7 +9,7 @@ import TimeResearchCard from '@/components/Cards/TimeResearchCard'
 
 export default {
   components: {
-    TimeResearchCard
+    TimeResearchCard,
   },
   computed: {
     loadedPublications()  {

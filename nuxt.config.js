@@ -1,6 +1,32 @@
 import colors from "vuetify/es5/util/colors"
+import webpack from "webpack"
+// const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 export default {
+  build: {
+    extend(config, { isDev }) {
+      // ..
+      config.module.rules.push({
+        test: /pdf\.worker(\.min)?\.js$/,
+        loader: "file-loader"
+      })
+      // Sets webpack's mode to development if `isDev` is true.
+      if (isDev) config.mode = "development"
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        from: "@/node_modules/pdfjs-dist/build/pdf.worker.js",
+        to: "pdf.worker.js"
+      }),
+      new webpack.NamedModulesPlugin()
+    ]
+    // output: {
+    //   path: path.join(__dirname, "dist"),
+    //   filename: "bundle.js",
+    //   publicPath: "http://localhost:3000",
+    //   globalObject: "this"
+    // }
+  },
   mode: "universal",
   /*
    ** Headers of the page
