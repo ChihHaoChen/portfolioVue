@@ -21,7 +21,8 @@ export default {
 
   data() {
     return {
-      url: "https://cdn.filestackcontent.com/5qOCEpKzQldoRsVatUPS",
+      // url: "https://cdn.filestackcontent.com/5qOCEpKzQldoRsVatUPS",
+      url: "https://app.box.com/s/fb8z67dpvkspyt96gnikuhskbqjt4kcd",
       documentError: undefined,
       enableUploader: process.env.VUE_APP_UPLOAD_ENABLED === 'true',
     };

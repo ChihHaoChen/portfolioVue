@@ -69,21 +69,21 @@ export default {
       const canvasContext = this.$el.getContext('2d');
       const renderContext = {canvasContext, viewport};
       this.renderTask = this.page.render(renderContext);
-      this.renderTask
-        .then(() => {
-          this.$emit('page-rendered', {
-            page: this.page,
-            text: `Rendered page ${this.pageNumber}`,
-          });
-         })
-        .catch(response => {
-          this.destroyRenderTask();
-          this.$emit('page-errored', {
-            response,
-            page: this.page,
-            text: `Failed to render page ${this.pageNumber}`,
-          });
+      this.renderTask.promise.
+      then(() => {
+        this.$emit('page-rendered', {
+          page: this.page,
+          text: `Rendered page ${this.pageNumber}`
+        })
+      })
+      .catch(err => {
+        this.destroyRenderTask();
+        this.$emit('page-errored', {
+          err,
+          page: this.page,
+          text: `Failed to render page ${this.pageNumber}`
         });
+      })
     },
     updateVisibility() {
       this.$parent.$emit('update-visibility');

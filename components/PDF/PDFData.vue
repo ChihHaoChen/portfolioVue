@@ -5,11 +5,10 @@ import PDFJSWorker from 'pdfjs-dist/build/pdf.worker.min';
 
 PDFJS.GlobalWorkerOptions.workerSrc = PDFJSWorker;
 function getDocument(url) {
-  // Using import statement in this way allows Webpack
-  // to treat pdf.js as an async dependency so we can
-  // avoid adding it to one of the main bundles
-  return import(
-	  'pdfjs-dist').then(pdfjs => pdfjs.getDocument(url));	
+  const loadingTask = PDFJS.getDocument(url);
+  return loadingTask.promise.then(pdf => {
+    return pdf
+  })
 }
 // pdf: instance of PDFData
 // see docs for PDF.js for more info
@@ -43,7 +42,6 @@ export default {
         getDocument(url)
           .then(pdf => {
 						this.pdf = pdf
-						console.log("pdf loaded")
 						})
           .catch(response => {
             this.$emit('document-errored', {text: 'Failed to retrieve PDF due to', response});
