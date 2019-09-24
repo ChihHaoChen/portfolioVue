@@ -5,7 +5,7 @@
         <v-layout column align-center justify-center>
           <v-flex class="mt-5" align-center justify-center>
             <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
-              <img src="@/images/avatar.png" alt="">
+              <img src="@/assets/images/avatar.png" alt="">
             </v-avatar>
           </v-flex>
           <v-flex align-center justify-center>
@@ -29,13 +29,13 @@
         <v-divider dark></v-divider>
         <v-layout row align-center justify-center class="icon-bar">
           <a href="mailto:chao700716@gmail.com">
-            <img src="@/images/email.png">
+            <img src="@/assets/images/email.png">
           </a>
           <a href="https://www.linkedin.com/in/chih-hao-chen-13583369/">
-            <img src="@/images/linkedin-box.png">
+            <img src="@/assets/images/linkedin-box.png">
           </a>
           <a href=https://github.com/ChihHaoChen>
-            <img src="@/images/github-box.png" >
+            <img src="@/assets/images/github-box.png" >
           </a>
           <v-spacer></v-spacer>      
         </v-layout>
@@ -120,7 +120,13 @@ margin: 20px 0;
 .nav-drawer-item a:hover,
 .nav-drawer-item a:active {
   color: cyan;
+  font-size: 1.7rem;
 }
+ 
+.nav-drawer-item a.nuxt-link-active {
+  font-size: 1.5rem;
+  list-style-type: circle;
+} 
 
 .icon-bar {
   padding: 12.5px 12.5px;
