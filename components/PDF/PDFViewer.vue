@@ -8,13 +8,6 @@
       @document-rendered="onDocumentRendered"
       @document-errored="onDocumentErrored"
       >
-      <!-- <template v-slot:preview="{pages}">
-        <PDFPreview
-          v-show="isPreviewEnabled"
-          class="pdf-viewer__preview"
-          v-bind="{pages, scale, currentPage, pageCount, isPreviewEnabled}"
-          />
-      </template> -->
       <template v-slot:document="{pages}">
         <PDFDocument
           class="pdf-viewer__document"
@@ -87,6 +80,7 @@ export default {
   },
   mounted() {
     document.body.classList.add('overflow-hidden');
+    
   }
 }
 </script>

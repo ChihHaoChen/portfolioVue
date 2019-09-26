@@ -1,7 +1,7 @@
 <template>
   <div
     class="scrolling-document"
-    v-scroll.immediate="updateScrollBounds"
+    v-scroll="updateScrollBounds"
     >
     <ScrollingPage
       v-for="page in pages"
@@ -70,6 +70,7 @@ export default {
     },
     updateScrollBounds() {
       const {scrollTop, clientHeight} = this.$el;
+      console.log("what?", this.$el)
       this.scrollTop = scrollTop;
       this.clientHeight = clientHeight;
     },

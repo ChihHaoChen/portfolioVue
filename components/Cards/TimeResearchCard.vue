@@ -26,7 +26,8 @@
                   </ul>
                 </div>
                 <div class="text-center">
-                  <v-btn class=detail-btn :href=publication.detailLink color='#006400'>Details</v-btn>
+                  <v-btn class=detail-btn @click="loadPDF($event, i, publication.pdfLink)" color='#006400'>Details</v-btn>
+                  <v-btn class=detail-btn :href=publication.detailLink color='#006400'>Published Info</v-btn>
                 </div>
                 <div class=tech-title>
                   TECHNOLOGIES
@@ -58,6 +59,16 @@ export default {
     publications: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    loadPDF(event, id, url) {
+      this.$router.push({
+        path: 'publications/pdfs/'+ id,
+        params: { url },
+        props: true
+      })
+      console.log("pdflink is", url)
     }
   }
 }

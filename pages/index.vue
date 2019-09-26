@@ -6,9 +6,6 @@
       >
     </PDFViewer>
   </v-content>
-  <!-- <v-content>
-    <v-btn>Test</v-btn>
-  </v-content> -->
 </template>
 
 <script>
@@ -40,10 +37,6 @@ export default {
 </script>
 
 <style scoped>
-/* .pdf-card {
-  margin-top: 0px;
-  align-self: center;
-} */
 </style>
 
 
