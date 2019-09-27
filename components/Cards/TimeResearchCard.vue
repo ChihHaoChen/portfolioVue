@@ -64,11 +64,10 @@ export default {
   methods: {
     loadPDF(event, id, url) {
       this.$router.push({
-        path: 'publications/pdfs/'+ id,
-        params: { url },
+        path: '/publications/'+id+'/pdf',
         props: true
       })
-      console.log("pdflink is", url)
+      this.$store.commit("setPDF", url)
     }
   }
 }

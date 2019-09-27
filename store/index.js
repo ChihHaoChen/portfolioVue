@@ -1,11 +1,13 @@
 import projects from "./modules/projects"
 import publications from "./modules/publications"
+import pdf from "./modules/pdf"
 import axios from "axios"
 const apiUrl = "https://portfoliovue-6c2b7.firebaseio.com/publications.json"
 
 export const modules = {
   projects,
-  publications
+  publications,
+  pdf
 }
 
 export const actions = {
