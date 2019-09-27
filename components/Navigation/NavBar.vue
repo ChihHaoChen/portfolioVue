@@ -103,12 +103,17 @@ export default {
   .nav-item a {
     text-decoration: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    opacity: 0.5;
   }
 
   .nav-item a:hover,
   .nav-item a:active {
-    color: cyan;
+    opacity: 1
+  }
+
+  .nav-item a.nuxt-link-active {
+    opacity: 1;
   }
 
   .icon-bar {

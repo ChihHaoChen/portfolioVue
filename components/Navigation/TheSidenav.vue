@@ -114,18 +114,17 @@ margin: 20px 0;
 .nav-drawer-item a {
   text-decoration: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  opacity: 0.5;
 }
 
 .nav-drawer-item a:hover,
 .nav-drawer-item a:active {
-  color: cyan;
-  font-size: 1.7rem;
+  opacity: 1;
 }
  
 .nav-drawer-item a.nuxt-link-active {
-  font-size: 1.5rem;
-  list-style-type: circle;
+  opacity: 1;
 } 
 
 .icon-bar {
