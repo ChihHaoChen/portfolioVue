@@ -25,7 +25,7 @@ export default {
 	},
   data() {
     return {
-			url: String(this.$store.getters.loadPDF),
+	    url: String(this.$store.getters.loadPDF),
       documentError: undefined,
       enableUploader: process.env.VUE_APP_UPLOAD_ENABLED === 'true',
     };

@@ -125,7 +125,17 @@ margin: 20px 0;
  
 .nav-drawer-item a.nuxt-link-active {
   opacity: 1;
+  font-size: 1.2em;
 } 
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
 
 .icon-bar {
   padding: 12.5px 12.5px;
