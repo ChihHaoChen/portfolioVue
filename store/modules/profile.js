@@ -10,7 +10,6 @@ const mutations = {
 
 const actions = {
   setProfile(vuexContext, profile) {
-    console.log("store Commited", profile)
     vuexContext.commit("setProfile", profile)
   }
 }

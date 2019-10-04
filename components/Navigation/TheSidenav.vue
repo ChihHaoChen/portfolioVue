@@ -21,7 +21,7 @@
             <ul class="nav-drawer-list">   
             <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
             <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/cv">MY CV</nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/cv">MY RÉSUMÉ</nuxt-link></li>
             <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
             </ul>
           </div>

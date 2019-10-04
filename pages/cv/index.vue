@@ -1,11 +1,12 @@
 <template>
-  <v-content fluid>
-    <v-btn @click="chkPDF"></v-btn>
-    <!-- <PDFViewer
+  <v-app>
+    <v-content fluid class=resume-page>
+    <PDFViewer
       v-bind="{url}"
     >
-    </PDFViewer> -->
+    </PDFViewer>
   </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -14,21 +15,22 @@ export default {
   components: {
     PDFViewer
   },
-  computed: {
-    loadResumePDF() {
-      return this.$store.getters.loadProfile
-    }
-  },
-  methods: {
-    chkPDF()  {
-      console.log(String(this.$store.getters.loadProfile))
-    }
-  },
   data()  {
     return {
-      url: String(this.$store.getters.loadProfile.resumePDF)
-      // url: "https://portfoliopdf.s3.us-east-2.amazonaws.com/ChihHaoChen_Resume.pdf"
+      url: this.$store.getters.loadProfile[0]["resumePDF"]
     };
+  },
+  computed: {
+    loadProfile() {
+      return this.$store.getters.loadProfile
+    }
   }
 }
 </script>
+
+<style scoped>
+.resume-page {
+  margin-top: 0px;
+  background-color: white
+}
+</style>

@@ -1,7 +1,9 @@
 <template>
-  <v-content fluid class=project-card> 
-    <TimeResearchCard :publications="loadedPublications"/>
-  </v-content>
+  <v-app>
+    <v-content fluid class=project-card> 
+      <TimeResearchCard :publications="loadedPublications"/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
@@ -15,9 +17,6 @@ export default {
     loadedPublications()  {
       return this.$store.getters.loadedPublications
     }
-  },
-  methods: {
-    
   }
 };
 </script>
