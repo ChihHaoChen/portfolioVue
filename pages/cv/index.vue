@@ -19,11 +19,6 @@ export default {
     return {
       url: this.$store.getters.loadProfile[0]["resumePDF"]
     };
-  },
-  computed: {
-    loadProfile() {
-      return this.$store.getters.loadProfile
-    }
   }
 }
 </script>

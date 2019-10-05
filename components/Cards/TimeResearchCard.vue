@@ -27,7 +27,7 @@
                 </div>
                 <div class="text-center">
                   <v-btn class=detail-btn @click="loadPDF($event, i, publication.pdfLink)" color='#006400'>Details</v-btn>
-                  <v-btn class=detail-btn :href=publication.detailLink color='#006400'>Published Info</v-btn>
+                  <v-btn class=detail-btn v-if="!(publication.detailLink==undefined)" :href=publication.detailLink color='#006400'>Published Info</v-btn>
                 </div>
                 <div class=tech-title>
                   TECHNOLOGIES

@@ -3,17 +3,13 @@
     <v-navigation-drawer app hidden-md-and-down :width="drawerWidth">
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
-          <v-flex class="mt-5" align-center justify-center>
-            <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
-              <img src="@/assets/images/avatar.png" alt="">
-            </v-avatar>
-          </v-flex>
-          <v-flex align-center justify-center>
-            <p class="text-under-avatar" column align-center justify-center>
-              CHIH-HAO CHEN <br/>
-              SOFTWARE ENGINEER
-            </p>
-          </v-flex>
+          <v-avatar size="150" class="grey ligthen-2 mt-5" column align-center justify-center>
+            <img src="@/assets/images/avatar.png" alt="">
+          </v-avatar>
+          <p class="text-under-avatar">
+            CHIH-HAO CHEN <br/>
+            SOFTWARE ENGINEER
+          </p>
         </v-layout> 
         <v-divider dark></v-divider>
         <v-layout column align-start flat>
@@ -73,23 +69,22 @@ export default {
     onResize()  {
       this.isMobile = window.innerWidth < 1260
         this.$bus.$emit('controlHeader', this.isMobile)
-      
     }
   }
 }
 </script>
 
 
-<style scoped>
+<style>
 .sidenav-container {
   height: 100%;
   width: 300px;
   align-items: center;
   background-color:  	#006400;
-  /* box-sizing: border-box;
-  padding: 0 0px;
-  margin: 0;
-  padding: 0; */
+  background-size: cover;
+  background-image: url('https://lorempixel.com/1920/1080/sports/2/');
+  position: absolute;
+  background-blend-mode: overlay;
 }
 
 .text-under-avatar  {

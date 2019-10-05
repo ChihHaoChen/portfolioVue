@@ -17,12 +17,6 @@ export default {
   components: {
     PDFViewer
 	},
-	computed: {
-		loadPDF() {
-			// Access the state of loadPDF in this.$store
-			return this.$store.getters.loadPDF
-		}
-	},
   data() {
     return {
 	    url: String(this.$store.getters.loadPDF),
