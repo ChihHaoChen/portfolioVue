@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content fluid class=project-card> 
+    <v-content fluid class="project-card"> 
       <TimeResearchCard :publications="loadedPublications"/>
     </v-content>
   </v-app>

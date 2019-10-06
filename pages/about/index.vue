@@ -1,20 +1,27 @@
 <template>
-  <v-content>
-    <ul class="cb-slideshow">
-      <li v-for="image in images" :key="image.id">
-        <span :style="backgroundClass(image)">
-        </span>
-        <div>
-          <h3>{{ image.title }}</h3>
-          <h2>{{ image.subtitle }}</h2>
-          <button @click="toProjects">
-            <span>PROJECTS</span>
-          </button>
-        </div>
-      </li>
-    </ul>
-  </v-content>
-  
+  <v-app>
+    <v-container fluid>
+    <v-layout row justify-center align-center>
+      <ul class="cb-slideshow">
+        <li v-for="image in images" :key="image.id">
+          <span :style="backgroundClass(image)">
+          </span>
+          <div>
+            <h3>{{ image.title }}</h3>
+            <h2>{{ image.subtitle }}</h2>        
+            <button class="button-style" @click="toProjects">
+              <span>PROJECTS</span>
+            </button>
+            <br/>
+            <button class="button-style" @click="toResearch">
+              <span>RESEARCH</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </v-layout>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -40,6 +47,12 @@ export default {
         path: '/projects',
         props: true
       })
+    },
+    toResearch() {
+      this.$router.push({
+        path: '/research',
+        props: true
+      })
     }
   },
   computed: {
@@ -51,6 +64,11 @@ export default {
 </script>
 
 <style>
+.top-container {
+  margin-top: 0px;
+  align-self: center;
+} 
+
 .cb-slideshow,
 .cb-slideshow:after {
   position: fixed;
@@ -67,7 +85,6 @@ export default {
   position: absolute;
   top: 0px;
   left: 0px;
-  /* color: transparent; */
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: none;
@@ -104,40 +121,43 @@ export default {
   line-height: 100px;
 }
 
-.cb-slideshow li div button {
+.button-style {
+  position: relative;
   font-size: 32px;
   color: white;
   border: 4px solid white;
-  width: 15%;
+  width: 240px;
   border-radius: 10px;
-  text-align: center;
   transition: all 0.5s;
   cursor: pointer;
   display: inline-block;
-  margin: 5px;
+  padding: 5px;
+  margin-bottom: 15px;
+  height: 60px;
 }
 
-.cb-slideshow li div button span{
+.button-style span{
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
+  padding-left: 10px;
 }
 
-.cb-slideshow li div button span:after{
+.button-style span:after{
   content: '\00bb';
   position: relative;
   opacity: 0;
   top: 0;
-  right: -20px;
+  /* right: 20px; */
   transition:0.5s;
 }
 
-.cb-slideshow li div button:hover span{
-  padding-right: 25px;
+.button-style:hover span{
+  padding-right: 25px
 }
 
-.cb-slideshow li div button:hover span:after{
+.button-style:hover span:after{
   opacity: 1;
   right: 0;
 }

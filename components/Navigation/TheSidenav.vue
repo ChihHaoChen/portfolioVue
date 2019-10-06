@@ -16,7 +16,7 @@
           <div class="navigation-draw-items">
             <ul class="nav-drawer-list">   
             <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS<span/></nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS<span/></nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/research">RESEARCH<span/></nuxt-link></li>
             <li class="nav-drawer-item"><nuxt-link to="/cv">MY RÉSUMÉ<span/></nuxt-link></li>
             <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT<span/></nuxt-link></li>
             </ul>

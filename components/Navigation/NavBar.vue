@@ -35,7 +35,7 @@
         <div class="navigation-items">
           <ul class="nav-list">   
           <li class="nav-item"><nuxt-link to="/projects"><span/>PROJECTS</nuxt-link></li>
-          <li class="nav-item"><nuxt-link to="/publications"><span/>PUBLICATIONS</nuxt-link></li>
+          <li class="nav-item"><nuxt-link to="/research"><span/>RESEARCH</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/cv"><span/>MY RÉSUMÉ</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/about"><span/>ABOUT</nuxt-link></li>
           </ul>
