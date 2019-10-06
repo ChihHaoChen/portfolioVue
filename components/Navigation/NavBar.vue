@@ -34,10 +34,10 @@
       <v-layout column align-end flat v-if="drawer">
         <div class="navigation-items">
           <ul class="nav-list">   
-          <li class="nav-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
-          <li class="nav-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
-          <li class="nav-item"><nuxt-link to="/cv">MY RÉSUMÉ</nuxt-link></li>
-          <li class="nav-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
+          <li class="nav-item"><nuxt-link to="/projects"><span/>PROJECTS</nuxt-link></li>
+          <li class="nav-item"><nuxt-link to="/publications"><span/>PUBLICATIONS</nuxt-link></li>
+          <li class="nav-item"><nuxt-link to="/cv"><span/>MY RÉSUMÉ</nuxt-link></li>
+          <li class="nav-item"><nuxt-link to="/about"><span/>ABOUT</nuxt-link></li>
           </ul>
         </div>
       </v-layout>
@@ -101,14 +101,25 @@ export default {
     opacity: 0.5;
   }
 
-  .nav-item a:hover,
-  .nav-item a:active {
-    opacity: 1
-  }
+.nav-item a:hover,
+.nav-item a:active {
+  opacity: 1;
+}
+ 
+.nav-item a.nuxt-link-active {
+  opacity: 1;
+  font-size: 1.2em;
+} 
 
-  .nav-item a.nuxt-link-active {
-    opacity: 1;
-  }
+.nav-item a:hover span{
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 5px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
 
   .icon-bar {
     padding: 12.5px 12.5px;

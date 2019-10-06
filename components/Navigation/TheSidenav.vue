@@ -15,10 +15,10 @@
         <v-layout column align-start flat>
           <div class="navigation-draw-items">
             <ul class="nav-drawer-list">   
-            <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS</nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS</nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/cv">MY RÉSUMÉ</nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT</nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS<span/></nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/publications">PUBLICATIONS<span/></nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/cv">MY RÉSUMÉ<span/></nuxt-link></li>
+            <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT<span/></nuxt-link></li>
             </ul>
           </div>
         </v-layout>
@@ -123,7 +123,7 @@ margin: 20px 0;
   font-size: 1.2em;
 } 
 
-.arrow {
+.nav-drawer-item a:hover span{
   border: solid white;
   border-width: 0 3px 3px 0;
   display: inline-block;
