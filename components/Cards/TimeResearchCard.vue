@@ -64,7 +64,7 @@ export default {
   methods: {
     loadPDF(event, id, url) {
       this.$router.push({
-        path: '/publications/'+id+'/pdf',
+        path: '/research/'+id+'/pdf',
         props: true
       })
       this.$store.commit("setPDF", url)
