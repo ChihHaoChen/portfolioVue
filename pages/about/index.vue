@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid>
-    <v-layout row justify-center align-center>
+    <v-content fluid>
       <ul class="cb-slideshow">
         <li v-for="image in images" :key="image.id">
           <span :style="backgroundClass(image)">
@@ -19,20 +18,20 @@
           </div>
         </li>
       </ul>
-    </v-layout>
-    </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
   data()  {
+    const profile = this.$store.getters.loadProfile[0]
     return {
       images: [{
       	id: 1,
-        title: "Hi, I'm Chih-Hao,",
-        subtitle: "a full-stack developer in APP development.",
-        path: 'https://portfoliopdf.s3.us-east-2.amazonaws.com/Images/backgroundAbout.jpg'
+        title: profile["aboutTitle"],
+        subtitle: profile["aboutSubTitle"],
+        path: profile["aboutBackgroundImage"]
       }]
     }
   },
@@ -64,18 +63,11 @@ export default {
 </script>
 
 <style>
-.top-container {
-  margin-top: 0px;
-  align-self: center;
-} 
-
 .cb-slideshow,
 .cb-slideshow:after {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
   z-index: 0;
 }
 
@@ -97,7 +89,6 @@ export default {
 .cb-slideshow li div {
   z-index: 1000;
   position: absolute;
-  padding-left: 300px;
   top: 20px;
   left: 20px;
   width: 80%;
@@ -123,7 +114,7 @@ export default {
 
 .button-style {
   position: relative;
-  font-size: 32px;
+  font-size: 33px;
   color: white;
   border: 4px solid white;
   width: 240px;
@@ -162,10 +153,6 @@ export default {
   right: 0;
 }
 
-
-
-
-
 @keyframes imageAnimation {
   0% {
     opacity: 1;
@@ -193,11 +180,23 @@ export default {
   .cb-slideshow li div h3 {
     font-size: 60px;
   }
+  .cb-slideshow li div h2 {
+    font-size: 60px;
+  }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .cb-slideshow li div h3 {
     font-size: 40px
+  }
+  .cb-slideshow li div h2 {
+    font-size: 40px
+  }
+  .button-style {
+    font-size: 22px;
+    width: 160px;
+    height: 40px;
+    border: 2.6px solid white;
   }
 }
 

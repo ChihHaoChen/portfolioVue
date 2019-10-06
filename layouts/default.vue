@@ -1,7 +1,7 @@
 <template>
   <v-app class="white lighten-4"> 
-    <TheSidenav ref="theSideNav"/>
-    <NavBar/>   
+    <TheSidenav :profile="loadProfile"/>
+    <NavBar :profile="loadProfile"/>   
     <nuxt/>
   </v-app>
 </template>
@@ -15,9 +15,9 @@ export default {
     TheSidenav,
     NavBar
   },
-  data() {
-    return {
-      // displaySidenav: true
+  computed: {
+    loadProfile() {
+      return this.$store.getters.loadProfile[0]
     }
   }
 }

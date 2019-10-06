@@ -1,28 +1,28 @@
 <template>
   <v-content>
-    <v-container v-show="topHeader" fluid class="top-container">
+    <v-container app hidden-md-and-up fluid class="top-container">
       <v-layout column align-center justify-center>
         <v-flex class="mt-5" align-center justify-center>
           <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
-            <img src="@/assets/images/avatar.png" alt="">
+            <img :src="profile.avatarUrl" alt="">
           </v-avatar>
         </v-flex>
         <v-flex align-center justify-center>
           <p class="text-under-avatar" column align-center justify-center>
-            CHIH-HAO CHEN <br/>
-            SOFTWARE ENGINEER
+            {{ profile.name }} <br/>
+            {{ profile.positionTitle }}
           </p>
         </v-flex>
       </v-layout> 
       <v-divider dark></v-divider>
       <v-layout row align-center justify-center class="icon-bar">
-        <a href="mailto:chao700716@gmail.com">
+        <a :href="email">
           <img src="@/assets/images/email.png">
         </a>
-        <a href="https://www.linkedin.com/in/chih-hao-chen-13583369/">
+        <a :href="profile.linkedInLink">
           <img src="@/assets/images/linkedin-box.png">
         </a>
-        <a href=https://github.com/ChihHaoChen>
+        <a :href="profile.gitHubLink">
           <img src="@/assets/images/github-box.png" >
         </a>       
         <v-spacer></v-spacer>
@@ -48,11 +48,17 @@
 <script>
 
 export default {
-  name: "NavBar",
+  props: {
+    profile: {
+      type: Object,
+      default: true
+    }
+  },
   data()  {
     return {
       drawer: false,
-      topHeader: true
+      topHeader: true,
+      email: "mailto:" + this.profile.email,
     }
   },
   mounted()  {
