@@ -68,7 +68,6 @@ export default {
   mounted() {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
-    console.log("profile is", this.profile.name)
   },
   methods:  {
     onResize()  {
@@ -87,7 +86,7 @@ export default {
   align-items: center;
   background-color:  	#006400;
   background-size: cover;
-  background-image: url('https://lorempixel.com/1920/1080/sports/2/');
+  background-image: url('https://portfoliopdf.s3.us-east-2.amazonaws.com/Images/bridgeLowSide.jpg');
   position: absolute;
   background-blend-mode: overlay;
 }

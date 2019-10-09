@@ -1,5 +1,6 @@
 import colors from "vuetify/es5/util/colors"
 import webpack from "webpack"
+
 // const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 export default {
@@ -20,27 +21,21 @@ export default {
       }),
       new webpack.NamedModulesPlugin()
     ]
-    // output: {
-    //   path: path.join(__dirname, "dist"),
-    //   filename: "bundle.js",
-    //   publicPath: "http://localhost:3000",
-    //   globalObject: "this"
-    // }
   },
   mode: "universal",
   /*
    ** Headers of the page
    */
   head: {
-    titleTemplate: "%s - " + process.env.npm_package_name,
-    title: process.env.npm_package_name || "",
+    titleTemplate: "%s - " + "Portfolio",
+    title: "Chih-Hao Chen",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
-        name: "description",
-        content: process.env.npm_package_description || ""
+        name: "Chih-Hao Chen",
+        content: "My Portfolio"
       }
     ],
     link: [
@@ -86,5 +81,10 @@ export default {
       error: colors.deepOrange.accent4,
       success: colors.green.accent3
     }
+  },
+  env: {
+    PUBLICATIONURL:
+      "https://portfoliovue-6c2b7.firebaseio.com/publications.json",
+    PROFILEURL: "https://portfoliovue-6c2b7.firebaseio.com/profile.json"
   }
 }

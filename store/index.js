@@ -3,8 +3,6 @@ import publications from "./modules/publications"
 import profile from "./modules/profile"
 import pdf from "./modules/pdf"
 import axios from "axios"
-const apiUrl = "https://portfoliovue-6c2b7.firebaseio.com/publications.json"
-const profileUrl = "https://portfoliovue-6c2b7.firebaseio.com/profile.json"
 
 export const modules = {
   profile,
@@ -18,7 +16,10 @@ export const actions = {
     const publicationsArray = []
     const profileUser = []
     return axios
-      .all([axios.get(profileUrl), axios.get(apiUrl)])
+      .all([
+        axios.get(process.env.PROFILEURL),
+        axios.get(process.env.PUBLICATIONURL)
+      ])
       .then(
         axios.spread((profile, publications) => {
           profileUser.push(profile.data)
