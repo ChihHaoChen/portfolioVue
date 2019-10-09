@@ -1,7 +1,9 @@
 <template>
-  <v-content class=project-card> 
-    <TimeProjectCard :projects="loadedProjects"/>
-  </v-content>
+  <v-app>
+    <v-content class=project-card> 
+      <TimeProjectCard :projects="loadedProjects"/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>

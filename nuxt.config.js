@@ -85,6 +85,7 @@ export default {
   env: {
     PUBLICATIONURL:
       "https://portfoliovue-6c2b7.firebaseio.com/publications.json",
-    PROFILEURL: "https://portfoliovue-6c2b7.firebaseio.com/profile.json"
+    PROFILEURL: "https://portfoliovue-6c2b7.firebaseio.com/profile.json",
+    PROJECTSURL: "https://portfoliovue-6c2b7.firebaseio.com/projects.json"
   }
 }
