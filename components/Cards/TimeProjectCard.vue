@@ -38,7 +38,11 @@
                 </div>
               </v-flex>
               <v-flex xs12 sm12 md12 lg6 xl6> 
-                <v-img aspect-ratio="1" :src="project.src"></v-img>
+                <div class="embed-responsive embed-responsive-16by9 content-wrapper" 
+                  v-if="!(project.videoUrl==undefined)">
+                  <iframe class="iframe-wrapper res-16by9" width="100%" height= "800" :src="videoUrl(project.videoUrl)" />
+                </div>
+                <v-img v-else aspect-ratio="1" :src="project.src"></v-img>
               </v-flex>
             </v-layout>
           </v-container>
@@ -58,6 +62,11 @@ export default {
     projects: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    videoUrl(url)  {
+      return `https://www.youtube.com/embed/j9I0PxhExQM`
     }
   }
 }
@@ -204,6 +213,32 @@ export default {
     position: relative;
     top: 5px;
   }
+  .content-wrapper{
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.iframe-wrapper{
+  width: 100%;
+  position: relative;
+}
+
+.res-4by3{
+  padding-bottom: 75%;
+}
+
+.res-16by9{
+  padding-bottom: 56.25%;
+}
+
+.iframe-wrapper iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 }
 </style>
 

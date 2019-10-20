@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-navigation-drawer app hidden-md-and-down :width="drawerWidth">
+    <v-navigation-drawer app :width="drawerWidth">
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
           <v-avatar size="150" class="ligthen-2 mt-5" column align-center justify-center>
@@ -77,7 +77,6 @@ export default {
   }
 }
 </script>
-
 
 <style>
 .sidenav-container {

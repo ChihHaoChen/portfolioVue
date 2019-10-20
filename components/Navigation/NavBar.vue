@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-container app hidden-md-and-up fluid class="top-container">
+    <v-container app fluid class="top-container">
       <v-layout column align-center justify-center>
         <v-flex class="mt-5" align-center justify-center>
           <v-avatar size="150" class="grey ligthen-2" align-center justif-center>
