@@ -95,22 +95,24 @@ export default {
   width: 80%;
   text-align: left;
   opacity: 1;
-  color: rgb(14, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .cb-slideshow div div h3 {
-  font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif;
-  font-size: 60px;
+  font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
+  /* font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif; */
+  font-size: 50px;
   font-style: bold;
   padding: 0;
-  line-height: 100px;
+  line-height: 80px;
 }
 
 .cb-slideshow div div h2 {
-  font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif;
-  font-size: 60px;
-  padding: 0;
-  line-height: 100px;
+  font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
+  /* font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif; */
+  font-size: 50px;
+  padding: 0 0 10px 0;
+  line-height: 80px;
 }
 
 .button-style {
