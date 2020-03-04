@@ -2,21 +2,20 @@
   <v-app>
     <v-content fluid>
       <ul class="cb-slideshow">
-        <li v-for="image in images" :key="image.id">
-          <span :style="backgroundClass(image)">
+        <div v-for="profile in profiles" :key="profile.id">
+          <span :style="backgroundClass(profile)" fluid>
           </span>
           <div>
-            <h3>{{ image.title }}</h3>
-            <h2>{{ image.subtitle }}</h2>        
+            <h3>{{ profile.title }}</h3>
+            <h2>{{ profile.subtitle }}</h2>
             <button class="button-style" @click="toProjects">
               <span>PROJECTS</span>
             </button>
-            <br/>
             <button class="button-style" @click="toResearch">
               <span>RESEARCH</span>
             </button>
           </div>
-        </li>
+        </div>
       </ul>
     </v-content>
   </v-app>
@@ -24,39 +23,41 @@
 
 <script>
 export default {
-  data()  {
+  data() {
     const profile = this.$store.getters.loadProfile[0]
     return {
-      images: [{
-      	id: 1,
-        title: profile["aboutTitle"],
-        subtitle: profile["aboutSubTitle"],
-        path: profile["aboutBackgroundImage"]
-      }]
+      profiles: [
+        {
+          id: 1,
+          title: profile["aboutTitle"],
+          subtitle: profile["aboutSubTitle"],
+          path: profile["aboutBackgroundImage"]
+        }
+      ]
+    }
+  },
+  computed: {
+    totalBackgroundImages() {
+      return this.images.length
     }
   },
   methods: {
-    backgroundClass(image) {
+    backgroundClass(profile) {
       return {
-        'background-image': `url(${image.path})`,
+        "background-image": `url(${profile.path})`
       }
     },
     toProjects() {
       this.$router.push({
-        path: '/projects',
+        path: "/projects",
         props: true
       })
     },
     toResearch() {
       this.$router.push({
-        path: '/research',
+        path: "/research",
         props: true
       })
-    }
-  },
-  computed: {
-    totalBackgroundImages() {
-      return this.images.length;
     }
   }
 }
@@ -65,13 +66,13 @@ export default {
 <style>
 .cb-slideshow,
 .cb-slideshow:after {
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 100%;
   z-index: 0;
 }
 
-.cb-slideshow li span {
+.cb-slideshow div span {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -86,7 +87,7 @@ export default {
   animation: imageAnimation 20s linear infinite 0s;
 }
 
-.cb-slideshow li div {
+.cb-slideshow div div {
   z-index: 1000;
   position: absolute;
   top: 20px;
@@ -94,19 +95,19 @@ export default {
   width: 80%;
   text-align: left;
   opacity: 1;
-  color: #fff;
+  color: rgb(14, 0, 0);
 }
 
-.cb-slideshow li div h3 {
-  font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+.cb-slideshow div div h3 {
+  font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif;
   font-size: 60px;
   font-style: bold;
   padding: 0;
   line-height: 100px;
 }
 
-.cb-slideshow li div h2 {
-  font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+.cb-slideshow div div h2 {
+  font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif;
   font-size: 60px;
   padding: 0;
   line-height: 100px;
@@ -127,7 +128,7 @@ export default {
   height: 60px;
 }
 
-.button-style span{
+.button-style span {
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -135,20 +136,20 @@ export default {
   padding-left: 10px;
 }
 
-.button-style span:after{
-  content: '\00bb';
+.button-style span:after {
+  content: "\00bb";
   position: relative;
   opacity: 0;
   top: 0;
   /* right: 20px; */
-  transition:0.5s;
+  transition: 0.5s;
 }
 
-.button-style:hover span{
-  padding-right: 25px
+.button-style:hover span {
+  padding-right: 25px;
 }
 
-.button-style:hover span:after{
+.button-style:hover span:after {
   opacity: 1;
   right: 0;
 }
@@ -175,7 +176,6 @@ export default {
   }
 }
 
-
 @media screen and (max-width: 1140px) {
   .cb-slideshow li div h3 {
     font-size: 60px;
@@ -187,10 +187,10 @@ export default {
 
 @media screen and (max-width: 800px) {
   .cb-slideshow li div h3 {
-    font-size: 40px
+    font-size: 40px;
   }
   .cb-slideshow li div h2 {
-    font-size: 40px
+    font-size: 40px;
   }
   .button-style {
     font-size: 22px;
@@ -199,7 +199,4 @@ export default {
     border: 2.6px solid white;
   }
 }
-
 </style>
-
-

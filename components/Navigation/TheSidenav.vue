@@ -3,37 +3,51 @@
     <v-navigation-drawer app :width="drawerWidth">
       <v-container class="sidenav-container">
         <v-layout column align-center justify-center>
-          <v-avatar size="150" class="ligthen-2 mt-5" column align-center justify-center>
-            <img :src="profile.avatarUrl" alt="">
+          <v-avatar
+            size="200"
+            class="ligthen-2 mt-5"
+            column
+            align-center
+            justify-center
+          >
+            <img :src="profile.avatarUrl" alt="" />
           </v-avatar>
           <p class="text-under-avatar">
-            {{ profile.name }} <br/>
+            {{ profile.name }} <br />
             {{ profile.positionTitle }}
           </p>
-        </v-layout> 
-        <v-divider dark></v-divider>
+        </v-layout>
+        <v-divider dark />
         <v-layout column align-start flat>
           <div class="navigation-draw-items">
-            <ul class="nav-drawer-list">   
-            <li class="nav-drawer-item"><nuxt-link to="/projects">PROJECTS<span/></nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/research">RESEARCH<span/></nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/cv">MY RÉSUMÉ<span/></nuxt-link></li>
-            <li class="nav-drawer-item"><nuxt-link to="/about">ABOUT<span/></nuxt-link></li>
+            <ul class="nav-drawer-list">
+              <li class="nav-drawer-item">
+                <nuxt-link to="/projects"> PROJECTS<span /> </nuxt-link>
+              </li>
+              <li class="nav-drawer-item">
+                <nuxt-link to="/research"> RESEARCH<span /> </nuxt-link>
+              </li>
+              <li class="nav-drawer-item">
+                <nuxt-link to="/cv"> MY RÉSUMÉ<span /> </nuxt-link>
+              </li>
+              <li class="nav-drawer-item">
+                <nuxt-link to="/about"> ABOUT<span /> </nuxt-link>
+              </li>
             </ul>
           </div>
         </v-layout>
-        <v-divider dark></v-divider>
+        <v-divider dark />
         <v-layout row align-center justify-center class="icon-bar">
           <a :href="email">
-            <img src="@/assets/images/email.png">
+            <img src="@/assets/images/email.png" />
           </a>
           <a :href="profile.linkedInLink">
-            <img src="@/assets/images/linkedin-box.png">
+            <img src="@/assets/images/linkedin-box.png" />
           </a>
           <a :href="profile.gitHubLink">
-            <img src="@/assets/images/github-box.png" >
+            <img src="@/assets/images/github-box.png" />
           </a>
-          <v-spacer></v-spacer>      
+          <v-spacer />
         </v-layout>
       </v-container>
     </v-navigation-drawer>
@@ -56,23 +70,23 @@ export default {
   data() {
     return {
       isMobile: false,
-      email: "mailto:" + this.profile.email,
+      email: "mailto:" + this.profile.email
     }
   },
 
-  beforeDestroy () {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', this.onResize, { passive: true })
-      }
-    },
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.onResize, { passive: true })
+    }
+  },
   mounted() {
     this.onResize()
-    window.addEventListener('resize', this.onResize, { passive: true })
+    window.addEventListener("resize", this.onResize, { passive: true })
   },
-  methods:  {
-    onResize()  {
+  methods: {
+    onResize() {
       this.isMobile = window.innerWidth < 1260
-        this.$bus.$emit('controlHeader', this.isMobile)
+      this.$bus.$emit("controlHeader", this.isMobile)
     }
   }
 }
@@ -81,38 +95,37 @@ export default {
 <style>
 .sidenav-container {
   height: 100%;
-  width: 300px;
   align-items: center;
-  background-color:  	#006400;
+  background-color: #000200;
   background-size: cover;
-  background-image: url('https://portfoliopdf.s3.us-east-2.amazonaws.com/Images/bridgeLowSide.jpg');
-  position: absolute;
+  background-image: url("https://portfoliopdf.s3.us-east-2.amazonaws.com/Images/bridgeLowSide.jpg");
+  position: relative;
   background-blend-mode: overlay;
 }
 
-.text-under-avatar  {
+.text-under-avatar {
   position: relative;
   padding: 1em 0;
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 0;
   text-align: center;
   color: white;
 }
 
 .nav-drawer-list {
-list-style: none;
-padding: 0 12.5px;
-margin: 0;
-text-align: left;
+  list-style: none;
+  padding: 0 12.5px;
+  margin: 10px;
+  text-align: left;
 }
 .nav-drawer-item {
-margin: 20px 0;
+  margin: 20px 0;
 }
 
 .nav-drawer-item a {
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   opacity: 0.5;
 }
 
@@ -120,13 +133,13 @@ margin: 20px 0;
 .nav-drawer-item a:active {
   opacity: 1;
 }
- 
+
 .nav-drawer-item a.nuxt-link-active {
   opacity: 1;
-  font-size: 1.2em;
-} 
+  font-size: 1.8em;
+}
 
-.nav-drawer-item a:hover span{
+.nav-drawer-item a:hover span {
   border: solid white;
   border-width: 0 3px 3px 0;
   display: inline-block;
