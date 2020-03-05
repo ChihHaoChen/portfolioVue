@@ -18,7 +18,7 @@
               </div>
               <v-container fluid class="card-layout">
                 <v-layout row wrap>
-                  <v-flex xs12 sm12 md12 lg6 xl6>
+                  <v-flex xs12 sm12 md12 lg4 xl4 class="left-card">
                     <div class="card-title">
                       {{ project.title }}
                     </div>
@@ -59,12 +59,13 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg6 xl6>
+                  <v-flex xs12 sm12 md12 lg8 xl8>
                     <v-carousel
                       :hide-delimiter-background="true"
                       :cycle="false"
                       show-arrows-on-hover
                       show-arrows
+                      class="carousel"
                     >
                       <v-carousel-item
                         v-for="(item, i) in project.mediaItems"
@@ -102,6 +103,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TimeProjectCard",
   props: {
@@ -121,6 +123,14 @@ export default {
 <style scoped>
 .containerSetup {
   background-color: #dbffc8;
+}
+
+.carousel {
+  min-height: 600px;
+}
+
+.left-card {
+  padding-right: 40px;
 }
 
 .videoContainer {
@@ -175,6 +185,7 @@ export default {
 }
 .card-layout {
   padding-left: 60px;
+  min-height: 600px;
 }
 .card-item {
   font-size: 20px;
@@ -238,7 +249,7 @@ export default {
   object-fit: cover;
 }
 
-@media all and (min-width: 0px) and (max-width: 800px) {
+@media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
     left: 0px;
@@ -246,7 +257,14 @@ export default {
   }
   .card-layout {
     padding-left: 0px;
+    min-height: 600px;
   }
+
+  .left-card {
+  padding-right: 0px;
+  padding-bottom: 40px;
+  }
+
   .StepProgress {
     position: relative;
     padding-left: 0px;

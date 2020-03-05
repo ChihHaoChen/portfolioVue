@@ -18,7 +18,7 @@
               </div>
               <v-container fluid class="card-layout">
                 <v-layout row wrap>
-                  <v-flex xs12 sm12 md12 lg6 xl6>
+                  <v-flex xs12 sm12 md12 lg4 xl4 class="left-card">
                     <div class="card-title">
                       {{ publication.title }}
                     </div>
@@ -67,7 +67,7 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg6 xl6>
+                  <v-flex xs12 sm12 md12 lg8 x8>
                     <v-carousel
                       :hide-delimiter-background="true"
                       :cycle="false"
@@ -120,6 +120,14 @@ export default {
   background-color: #dbffc8;
 }
 
+.carousel {
+  min-height: 600px;
+}
+
+.left-card {
+  padding-right: 40px;
+}
+
 .time {
   position: absolute;
   left: -70px;
@@ -168,6 +176,7 @@ export default {
 }
 .card-layout {
   padding-left: 60px;
+  min-height: 600px;
 }
 .card-item {
   font-size: 20px;
@@ -232,7 +241,7 @@ export default {
   object-fit: cover;
 }
 
-@media all and (min-width: 0px) and (max-width: 800px) {
+@media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
     left: 0px;
@@ -240,6 +249,12 @@ export default {
   }
   .card-layout {
     padding-left: 0px;
+    min-height: 600px;
+  }
+
+  .left-card {
+    padding-right: 0px;
+    padding-bottom: 40px;
   }
   .StepProgress {
     position: relative;
