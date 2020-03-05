@@ -12,7 +12,7 @@
         <v-container class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="i != 0" class="card-divider"/>
+              <hr v-if="i != 0" class="card-divider" />
               <div class="bold time">
                 {{ `${publication.start} - ${publication.end}` }}
               </div>
@@ -79,15 +79,10 @@
                         :key="i"
                       >
                         <div>
-                          <v-img
-                            :src="item.src"
-                            :contain="false"
-                            class="imageContainer"
-                          />
+                          <v-img :src="item.src" class="imageContainer" />
                         </div>
                       </v-carousel-item>
                     </v-carousel>
-                    <!-- <v-img aspect-ratio="1" :src="publication.src" /> -->
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -124,7 +119,6 @@ export default {
 .containerSetup {
   background-color: #dbffc8;
 }
-
 
 .time {
   position: absolute;

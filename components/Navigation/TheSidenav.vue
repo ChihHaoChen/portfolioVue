@@ -13,7 +13,9 @@
             <img :src="profile.avatarUrl" alt="" />
           </v-avatar>
           <p class="text-under-avatar">
-            {{ profile.name }} <br />
+            {{ profile.name }}
+          </p>
+          <p class="text-under-avatar-position">
             {{ profile.positionTitle }}
           </p>
         </v-layout>
@@ -95,21 +97,34 @@ export default {
 <style>
 .sidenav-container {
   height: 100%;
+  width: 300px;
+  padding: 0 0 0 0;
   align-items: center;
-  background-color: #000200;
+  background-color: #117864;
   background-size: cover;
-  background-image: url("https://portfoliopdf.s3.us-east-2.amazonaws.com/Images/bridgeLowSide.jpg");
   position: relative;
   background-blend-mode: overlay;
 }
 
 .text-under-avatar {
   position: relative;
-  padding: 1em 0;
-  font-size: 2em;
+  padding: 1em 0 0 0;
+  font-size: 2.2em;
   margin: 0;
   text-align: center;
   color: white;
+  font-weight: bold;
+  font-family: Courier New;
+}
+
+.text-under-avatar-position {
+  position: relative;
+  padding: 0.5em 0 1em 0;
+  font-size: 2em;
+  margin: 0;
+  text-align: center;
+  color: #fdebd0;
+  font-family: "Blinker";
 }
 
 .nav-drawer-list {
@@ -127,6 +142,7 @@ export default {
   color: white;
   font-size: 1.8rem;
   opacity: 0.5;
+  font-family: "Blinker";
 }
 
 .nav-drawer-item a:hover,

@@ -13,8 +13,10 @@
           </v-avatar>
         </v-flex>
         <v-flex align-center justify-center>
-          <p class="text-under-avatar" column align-center justify-center>
-            {{ profile.name }} <br />
+          <p class="text-under-avatar">
+            {{ profile.name }}
+          </p>
+          <p class="text-under-avatar-position">
             {{ profile.positionTitle }}
           </p>
         </v-flex>
@@ -85,7 +87,7 @@ export default {
 .top-container {
   width: 100%;
   align-items: center;
-  background-color: #000200;
+  background-color: #117864;
   box-sizing: border-box;
   padding: 0 0px;
   margin: 0;
@@ -94,11 +96,23 @@ export default {
 
 .text-under-avatar {
   position: relative;
-  padding: 1em 0;
-  font-size: 2em;
+  padding: 1em 0 0 0;
+  font-size: 2.2em;
   margin: 0;
   text-align: center;
   color: white;
+  font-weight: bold;
+  font-family: Courier New;
+}
+
+.text-under-avatar-position {
+  position: relative;
+  padding: 0.5em 0 1em 0;
+  font-size: 2em;
+  margin: 0;
+  text-align: center;
+  color: #fdebd0;
+  font-family: "Blinker";
 }
 
 .nav-list {
@@ -117,6 +131,7 @@ export default {
   color: white;
   font-size: 1.8rem;
   opacity: 0.5;
+  font-family: "Blinker";
 }
 
 .nav-item a:hover,
