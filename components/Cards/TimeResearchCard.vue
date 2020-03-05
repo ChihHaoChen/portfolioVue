@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="containerSetup">
     <v-layout
       v-for="(publication, i) in publications"
       :key="i"
@@ -12,7 +12,7 @@
         <v-container class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="i != 0" class="card-divider" />
+              <hr v-if="i != 0" class="card-divider"/>
               <div class="bold time">
                 {{ `${publication.start} - ${publication.end}` }}
               </div>
@@ -68,7 +68,26 @@
                     </div>
                   </v-flex>
                   <v-flex xs12 sm12 md12 lg6 xl6>
-                    <v-img aspect-ratio="1" :src="publication.src" />
+                    <v-carousel
+                      :hide-delimiter-background="true"
+                      :cycle="false"
+                      show-arrows-on-hover
+                      show-arrows
+                    >
+                      <v-carousel-item
+                        v-for="(item, i) in publication.mediaItems"
+                        :key="i"
+                      >
+                        <div>
+                          <v-img
+                            :src="item.src"
+                            :contain="false"
+                            class="imageContainer"
+                          />
+                        </div>
+                      </v-carousel-item>
+                    </v-carousel>
+                    <!-- <v-img aspect-ratio="1" :src="publication.src" /> -->
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -102,6 +121,11 @@ export default {
 </script>
 
 <style scoped>
+.containerSetup {
+  background-color: #dbffc8;
+}
+
+
 .time {
   position: absolute;
   left: -70px;
@@ -208,6 +232,10 @@ export default {
   border-radius: 50%;
   position: relative;
   top: 5px;
+}
+
+.imageContainer {
+  object-fit: cover;
 }
 
 @media all and (min-width: 0px) and (max-width: 800px) {

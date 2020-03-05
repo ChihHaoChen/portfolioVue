@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="containerSetup">
     <v-layout
       v-for="(project, i) in projects"
       :key="i"
@@ -12,7 +12,7 @@
         <v-container class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="i != 0" class="card-divider" >
+              <hr v-if="i != 0" class="card-divider">
               <div class="bold time">
                 {{ `${project.start} - ${project.end}` }}
               </div>
@@ -60,7 +60,12 @@
                     </div>
                   </v-flex>
                   <v-flex xs12 sm12 md12 lg6 xl6>
-                    <v-carousel :show-arrows="false">
+                    <v-carousel
+                      :hide-delimiter-background="true"
+                      :cycle="false"
+                      show-arrows-on-hover
+                      show-arrows
+                    >
                       <v-carousel-item
                         v-for="(item, i) in project.mediaItems"
                         :key="i"
@@ -72,11 +77,17 @@
                           <iframe
                             class="iframe-wrapper res-16by9"
                             width="100%"
-                            height="800"
+                            height="500"
                             :src="videoUrl(item.videoUrl)"
                           />
                         </div>
-                        <v-img v-else aspect-ratio="1" :src="item.src" />
+                        <div v-else>
+                          <v-img
+                            :src="item.src"
+                            :contain="true"
+                            class="imageContainer"
+                          />
+                        </div>
                       </v-carousel-item>
                     </v-carousel>
                   </v-flex>
@@ -108,6 +119,14 @@ export default {
 </script>
 
 <style scoped>
+.containerSetup {
+  background-color: #dbffc8;
+}
+
+.videoContainer {
+  position: relative;
+}
+
 .time {
   position: absolute;
   left: -70px;
@@ -159,7 +178,6 @@ export default {
 }
 .card-item {
   font-size: 20px;
-  background-color: white;
   padding-left: 20px;
 }
 .card-title {
@@ -205,7 +223,7 @@ export default {
   margin-top: 10px;
   background-color: transparent;
   border: 1px solid #006400;
-  width: 90%;
+  width: 95%;
   opacity: 0.6;
   margin-left: 80px;
   margin-right: 80px;
@@ -214,6 +232,10 @@ export default {
   border-radius: 50%;
   position: relative;
   top: 5px;
+}
+
+.imageContainer {
+  object-fit: cover;
 }
 
 @media all and (min-width: 0px) and (max-width: 800px) {
@@ -263,8 +285,12 @@ export default {
   }
 
   .iframe-wrapper {
+    top: 0;
+    left: 0;
     width: 100%;
-    position: relative;
+    height: 100%;
+    border: 0;
+    position: absolute;
   }
 
   .res-4by3 {
