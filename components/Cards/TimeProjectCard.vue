@@ -1,18 +1,37 @@
 <template>
   <v-container fluid class="containerSetup">
     <v-layout
-      v-for="(project, i) in projects"
-      :key="i"
+      v-for="(project, iProject) in projects"
+      :key="iProject"
       row
       justify-space-between
       justify-center
       align-center
     >
       <v-flex xs12 sm12 md12 lg12 xl12>
-        <v-container class="timeline-wrapper">
+        <div
+          v-if="selectedImage && selectedSection == iProject"
+          max-width="85vw"
+        >
+          <v-img
+            v-tippy="{
+              followCursor: true,
+              interactive: true,
+              arrow: true,
+              arrowType: 'round',
+              size: 'large'
+            }"
+            :src="selectedImage"
+            alt=""
+            width="100%"
+            content="Click again to close the image!"
+            @click.stop="selectedImage = null"
+          />
+        </div>
+        <v-container v-else class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="i != 0" class="card-divider">
+              <hr v-if="iProject != 0" class="card-divider" />
               <div class="bold time">
                 {{ `${project.start} - ${project.end}` }}
               </div>
@@ -84,9 +103,19 @@
                         </div>
                         <div v-else>
                           <v-img
+                            v-tippy="{
+                              followCursor: true,
+                              interactive: true,
+                              arrow: true,
+                              arrowType: 'round',
+                              size: 'large'
+                            }"
                             :src="item.src"
                             :contain="true"
+                            :aspect-ratio="16 / 9"
                             class="imageContainer"
+                            content="Click to zoom the image!"
+                            @click="zoomImage(item.src, iProject)"
                           />
                         </div>
                       </v-carousel-item>
@@ -103,6 +132,25 @@
 </template>
 
 <script>
+import Vue from "vue"
+import VueTippy, { TippyComponent } from "vue-tippy"
+import "tippy.js/themes/light.css"
+
+Vue.use(VueTippy)
+Vue.component("tippy", TippyComponent)
+
+// or
+Vue.use(VueTippy, {
+  directive: "tippy", // => v-tippy
+  flipDuration: 0,
+  popperOptions: {
+    modifiers: {
+      preventOverflow: {
+        enabled: false
+      }
+    }
+  }
+})
 
 export default {
   name: "TimeProjectCard",
@@ -112,9 +160,21 @@ export default {
       required: true
     }
   },
+  data: function() {
+    return {
+      selectedImage: null,
+      selectedSection: null,
+      msg: "This is a message!"
+    }
+  },
   methods: {
     videoUrl(url) {
       return `https://www.youtube.com/embed/j9I0PxhExQM`
+    },
+
+    zoomImage(url, iProject) {
+      this.selectedImage = url
+      this.selectedSection = iProject
     }
   }
 }
@@ -126,7 +186,7 @@ export default {
 }
 
 .carousel {
-  min-height: 600px;
+  min-height: max-content;
 }
 
 .left-card {
@@ -261,8 +321,8 @@ export default {
   }
 
   .left-card {
-  padding-right: 0px;
-  padding-bottom: 40px;
+    padding-right: 0px;
+    padding-bottom: 40px;
   }
 
   .StepProgress {
@@ -298,17 +358,16 @@ export default {
   }
   .content-wrapper {
     max-width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
+    margin: 0 0 0 0;
   }
 
   .iframe-wrapper {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: max-content;
     border: 0;
-    position: absolute;
+    position: relative;
   }
 
   .res-4by3 {
@@ -316,15 +375,16 @@ export default {
   }
 
   .res-16by9 {
-    padding-bottom: 56.25%;
+    /* padding-bottom: 56.25%; */
   }
 
   .iframe-wrapper iframe {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: max-content;
+    /* height: 100%; */
   }
 }
 </style>
