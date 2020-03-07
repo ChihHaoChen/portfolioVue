@@ -1,86 +1,80 @@
 <template>
   <v-app>
-    <v-container fluid>
-    <v-layout row justify-center align-center>
+    <v-content fluid>
       <ul class="cb-slideshow">
-        <li v-for="image in images" :key="image.id">
-          <span :style="backgroundClass(image)">
-          </span>
+        <div v-for="profile in profiles" :key="profile.id">
+          <span :style="backgroundClass(profile)" fluid />>
           <div>
-            <h3>{{ image.title }}</h3>
-            <h2>{{ image.subtitle }}</h2>        
+            <p class="top-title">
+              {{ profile.title }}
+            </p>
+            <p class="sub-title">
+              {{ profile.subtitle }}
+            </p>
             <button class="button-style" @click="toProjects">
               <span>PROJECTS</span>
             </button>
-            <br/>
             <button class="button-style" @click="toResearch">
               <span>RESEARCH</span>
             </button>
           </div>
-        </li>
+        </div>
       </ul>
-    </v-layout>
-    </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
-  data()  {
+  data() {
     const profile = this.$store.getters.loadProfile[0]
     return {
-      images: [{
-      	id: 1,
-        title: profile["aboutTitle"],
-        subtitle: profile["aboutSubTitle"],
-        path: profile["aboutBackgroundImage"]
-      }]
+      profiles: [
+        {
+          id: 1,
+          title: profile["introductionName"],
+          subtitle: profile["introductionTitle"],
+          path: profile["introductionBackgroundImage"]
+        }
+      ]
+    }
+  },
+  computed: {
+    totalBackgroundImages() {
+      return this.images.length
     }
   },
   methods: {
-    backgroundClass(image) {
+    backgroundClass(profile) {
       return {
-        'background-image': `url(${image.path})`,
+        "background-image": `url(${profile.path})`
       }
     },
     toProjects() {
       this.$router.push({
-        path: '/projects',
+        path: "/projects",
         props: true
       })
     },
     toResearch() {
       this.$router.push({
-        path: '/research',
+        path: "/research",
         props: true
       })
-    }
-  },
-  computed: {
-    totalBackgroundImages() {
-      return this.images.length;
     }
   }
 }
 </script>
 
 <style>
-.top-container {
-  margin-top: 0px;
-  align-self: center;
-} 
-
 .cb-slideshow,
 .cb-slideshow:after {
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
   z-index: 0;
 }
-
-.cb-slideshow li span {
+.cb-slideshow div span {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -94,50 +88,50 @@ export default {
   z-index: 0;
   animation: imageAnimation 20s linear infinite 0s;
 }
-
-.cb-slideshow li div {
+.cb-slideshow div div {
   z-index: 1000;
   position: absolute;
-  padding-left: 300px;
   top: 20px;
   left: 20px;
   width: 80%;
   text-align: left;
   opacity: 1;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
-
-.cb-slideshow li div h3 {
-  font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-  font-size: 60px;
+.top-title {
+  font-family: "Courier";
+  font-size: 4em;
   font-style: bold;
-  padding: 0;
-  line-height: 100px;
+  padding: 5px 0 0 0;
+  line-height: 1em;
+  font-weight: bold;
 }
 
-.cb-slideshow li div h2 {
-  font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-  font-size: 60px;
-  padding: 0;
-  line-height: 100px;
+.sub-title {
+  font-family: "Blinker";
+  font-size: 3em;
+  padding: 0 0 10px 0;
+  line-height: 1em;
+  color: #fdebd0;
 }
 
 .button-style {
   position: relative;
-  font-size: 33px;
+  font-size: 30px;
   color: white;
   border: 4px solid white;
-  width: 240px;
-  border-radius: 10px;
-  transition: all 0.5s;
+  width: 220px;
+  border-radius: 16px;
   cursor: pointer;
   display: inline-block;
-  padding: 5px;
+  padding: 4px;
   margin-bottom: 15px;
-  height: 60px;
+  height: 55px;
+  margin-right: 10px;
+  font-family: "Blinker";
 }
 
-.button-style span{
+.button-style span {
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -145,24 +139,22 @@ export default {
   padding-left: 10px;
 }
 
-.button-style span:after{
-  content: '\00bb';
+.button-style span:after {
+  content: "\00bb";
   position: relative;
   opacity: 0;
   top: 0;
-  /* right: 20px; */
-  transition:0.5s;
+  transition: 0.5s;
 }
 
-.button-style:hover span{
-  padding-right: 25px
+.button-style:hover span {
+  padding-right: 25px;
 }
 
-.button-style:hover span:after{
+.button-style:hover span:after {
   opacity: 1;
   right: 0;
 }
-
 @keyframes imageAnimation {
   0% {
     opacity: 1;
@@ -184,31 +176,26 @@ export default {
     opacity: 1;
   }
 }
-
-@media screen and (max-width: 1140px) {
-  .cb-slideshow li div h3 {
-    font-size: 60px;
+@media screen and (max-width: 1260px) {
+  .top-title {
+    font-size: 3.5em;
   }
-  .cb-slideshow li div h2 {
-    font-size: 60px;
+  .sub-title {
+    font-size: 2.5em;
   }
 }
-
 @media screen and (max-width: 800px) {
-  .cb-slideshow li div h3 {
-    font-size: 40px
+  .top-title {
+    font-size: 3em;
   }
-  .cb-slideshow li div h2 {
-    font-size: 40px
+  .sub-title {
+    font-size: 2em;
   }
   .button-style {
     font-size: 22px;
     width: 160px;
     height: 40px;
-    border: 2.6px solid white;
+    border: 2.4px solid white;
   }
 }
-
 </style>
-
-

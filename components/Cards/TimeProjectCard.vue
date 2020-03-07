@@ -80,7 +80,7 @@
                   </v-flex>
                   <v-flex xs12 sm12 md12 lg8 xl8>
                     <v-carousel
-                      :hide-delimiter-background="true"
+                      hide-delimiter-background
                       :cycle="false"
                       show-arrows-on-hover
                       show-arrows
@@ -89,6 +89,7 @@
                       <v-carousel-item
                         v-for="(item, i) in project.mediaItems"
                         :key="i"
+                        class="carousel-item"
                       >
                         <div
                           v-if="!(item.videoUrl == undefined)"
@@ -139,9 +140,8 @@ import "tippy.js/themes/light.css"
 Vue.use(VueTippy)
 Vue.component("tippy", TippyComponent)
 
-// or
 Vue.use(VueTippy, {
-  directive: "tippy", // => v-tippy
+  directive: "tippy",
   flipDuration: 0,
   popperOptions: {
     modifiers: {
@@ -163,15 +163,13 @@ export default {
   data: function() {
     return {
       selectedImage: null,
-      selectedSection: null,
-      msg: "This is a message!"
+      selectedSection: null
     }
   },
   methods: {
     videoUrl(url) {
-      return `https://www.youtube.com/embed/j9I0PxhExQM`
+      return `https://www.youtube.com/embed/`+ url
     },
-
     zoomImage(url, iProject) {
       this.selectedImage = url
       this.selectedSection = iProject
@@ -187,6 +185,11 @@ export default {
 
 .carousel {
   min-height: max-content;
+  border: none;
+}
+
+.carousel-item {
+  border: none;
 }
 
 .left-card {

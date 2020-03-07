@@ -1,18 +1,37 @@
 <template>
   <v-container fluid class="containerSetup">
     <v-layout
-      v-for="(publication, i) in publications"
-      :key="i"
+      v-for="(publication, iResearch) in publications"
+      :key="iResearch"
       row
       justify-space-between
       justify-center
       align-center
     >
       <v-flex xs12 sm12 md12 lg12 xl12>
-        <v-container class="timeline-wrapper">
+        <div
+          v-if="selectedImage && selectedSection == iResearch"
+          max-width="85vw"
+        >
+          <v-img
+            v-tippy="{
+              followCursor: true,
+              interactive: true,
+              arrow: true,
+              arrowType: 'round',
+              size: 'large'
+            }"
+            :src="selectedImage"
+            alt=""
+            width="100%"
+            content="Click again to close the image!"
+            @click.stop="selectedImage = null"
+          />
+        </div>
+        <v-container v-else class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="i != 0" class="card-divider" />
+              <hr v-if="iResearch != 0" class="card-divider" />
               <div class="bold time">
                 {{ `${publication.start} - ${publication.end}` }}
               </div>
@@ -67,7 +86,7 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg8 x8>
+                  <v-flex xs12 sm12 md12 lg8 xl8>
                     <v-carousel
                       :hide-delimiter-background="true"
                       :cycle="false"
@@ -79,7 +98,21 @@
                         :key="i"
                       >
                         <div>
-                          <v-img :src="item.src" class="imageContainer" />
+                          <v-img
+                            v-tippy="{
+                              followCursor: true,
+                              interactive: true,
+                              arrow: true,
+                              arrowType: 'round',
+                              size: 'large'
+                            }"
+                            :src="item.src"
+                            :contain="true"
+                            :aspect-ratio="16 / 9"
+                            class="imageContainer"
+                            content="Click to zoom the image!"
+                            @click="zoomImage(item.src, iResearch)"
+                          />
                         </div>
                       </v-carousel-item>
                     </v-carousel>
@@ -95,12 +128,37 @@
 </template>
 
 <script>
+import Vue from "vue"
+import VueTippy, { TippyComponent } from "vue-tippy"
+import "tippy.js/themes/light.css"
+
+Vue.use(VueTippy)
+Vue.component("tippy", TippyComponent)
+
+Vue.use(VueTippy, {
+  directive: "tippy",
+  flipDuration: 0,
+  popperOptions: {
+    modifiers: {
+      preventOverflow: {
+        enabled: false
+      }
+    }
+  }
+})
+
 export default {
   name: "TimeResearchCard",
   props: {
     publications: {
       type: Array,
       required: true
+    }
+  },
+  data: function() {
+    return {
+      selectedImage: null,
+      selectedSection: null
     }
   },
   methods: {
@@ -110,6 +168,10 @@ export default {
         props: true
       })
       this.$store.commit("setPDF", url)
+    },
+    zoomImage(url, iProject) {
+      this.selectedImage = url
+      this.selectedSection = iProject
     }
   }
 }
@@ -121,7 +183,7 @@ export default {
 }
 
 .carousel {
-  min-height: 600px;
+  min-height: max-content;
 }
 
 .left-card {
@@ -180,7 +242,6 @@ export default {
 }
 .card-item {
   font-size: 20px;
-  background-color: white;
   padding-left: 20px;
 }
 .card-title {
@@ -226,7 +287,7 @@ export default {
   margin-top: 10px;
   background-color: transparent;
   border: 1px solid #006400;
-  width: 90%;
+  width: 95%;
   opacity: 0.6;
   margin-left: 80px;
   margin-right: 80px;
@@ -286,6 +347,10 @@ export default {
     border-radius: 50%;
     position: relative;
     top: 5px;
+  }
+  .content-wrapper {
+    max-width: 900px;
+    margin: 0 0 0 0;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content>
+    <v-content fluid>
       <v-container fluid ma-0 pa-0 fill-height class="topContainer">
         <TimeProjectCard :projects="loadedProjects" class="project-card" />
       </v-container>

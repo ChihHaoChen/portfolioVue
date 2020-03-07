@@ -37,5 +37,7 @@ html {
 
 body {
   margin: 0;
-}</style
->>
+  width: 100%;
+  position: relative;
+}
+</style>
