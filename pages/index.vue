@@ -103,7 +103,6 @@ export default {
   font-size: 4em;
   font-style: bold;
   padding: 5px 0 0 0;
-  line-height: 1em;
   font-weight: bold;
 }
 
@@ -111,7 +110,6 @@ export default {
   font-family: "Blinker";
   font-size: 3em;
   padding: 0 0 10px 0;
-  line-height: 1em;
   color: #fdebd0;
 }
 
@@ -180,18 +178,22 @@ export default {
 }
 @media screen and (max-width: 1260px) {
   .top-title {
-    font-size: 3.5em;
+    font-size: 3em;
+    padding: 0;
   }
   .sub-title {
-    font-size: 2.5em;
+    font-size: 2.2em;
+    padding: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .top-title {
-    font-size: 2.5em;
+    font-size: 2.2em;
+    padding: 0;
   }
   .sub-title {
     font-size: 1.8em;
+    padding: 0;
   }
   .button-style {
     font-size: 22px;
