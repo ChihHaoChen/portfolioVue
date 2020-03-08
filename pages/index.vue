@@ -3,7 +3,7 @@
     <v-content fluid>
       <ul class="cb-slideshow">
         <div v-for="profile in profiles" :key="profile.id">
-          <span :style="backgroundClass(profile)" fluid />>
+          <span :style="backgroundClass(profile)" fluid />
           <div>
             <p class="top-title">
               {{ profile.title }}
@@ -129,6 +129,8 @@ export default {
   height: 55px;
   margin-right: 10px;
   font-family: "Blinker";
+  text-align: center;
+  vertical-align: middle;
 }
 
 .button-style span {
@@ -186,16 +188,20 @@ export default {
 }
 @media screen and (max-width: 800px) {
   .top-title {
-    font-size: 3em;
+    font-size: 2.5em;
   }
   .sub-title {
-    font-size: 2em;
+    font-size: 1.8em;
   }
   .button-style {
     font-size: 22px;
-    width: 160px;
-    height: 40px;
-    border: 2.4px solid white;
+    width: 140px;
+    height: 45px;
+    border: 4px solid white;
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 5px;
   }
 }
 </style>
