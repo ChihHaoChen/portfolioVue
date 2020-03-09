@@ -20,7 +20,8 @@ export default {
         to: "pdf.worker.js"
       }),
       new webpack.NamedModulesPlugin()
-    ]
+    ],
+    loading: "~/components/loading.vue"
   },
   mode: "universal",
   /*
