@@ -45,7 +45,7 @@
                       v-for="(descriptionPargarph,indexParagarph) in project.description"
                       :key="indexParagarph"
                     >
-                      <p>{{ descriptionPargarph }}</p>
+                      <p class="descriptionPara">{{ descriptionPargarph }}</p>
                     </div>
                     <div>
                       <ul class="summaryList">
@@ -338,6 +338,10 @@ export default {
 
 .imageContainer {
   object-fit: cover;
+}
+
+.descriptionPara {
+  text-indent: 22px;
 }
 
 @media all and (min-width: 0px) and (max-width: 1260px) {
