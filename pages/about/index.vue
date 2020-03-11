@@ -16,9 +16,14 @@
             <v-flex xs12 sm12 md12 lg9 x9>
               <v-card color="#dbffc8" class="rightCard">
                 <v-card-text class="aboutMainContent">
-                  <p>
-                    {{ profile.aboutContent }}
-                  </p>
+                  <div
+                    v-for="(contentPargarph, index) in profile.aboutContent"
+                    :key="index"
+                  >
+                    <p class="cotentPara">
+                      {{ contentPargarph }}
+                    </p>
+                  </div>
                 </v-card-text>
               </v-card>
             </v-flex>
@@ -112,6 +117,10 @@ export default {
   width: 95%;
   margin: 10px 20px 5px 60px;
   padding: 0 30px 0 0;
+}
+.cotentPara {
+  text-indent: 22px;
+  font-size: 1em;
 }
 
 @media all and (min-width: 0px) and (max-width: 1260px) {
