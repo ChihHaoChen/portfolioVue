@@ -9,7 +9,7 @@
       align-center
     >
       <v-flex xs12 sm12 md12 lg12 xl12>
-        <div
+        <!-- <div
           v-if="selectedImage && selectedSection == iProject"
           max-width="85vw"
         >
@@ -27,8 +27,8 @@
             content="Click again to close the image!"
             @click.stop="selectedImage = null"
           />
-        </div>
-        <v-container v-else class="timeline-wrapper">
+        </div> -->
+        <v-container class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
               <hr v-if="iProject != 0" class="card-divider" />
@@ -41,8 +41,11 @@
                     <div class="card-title">
                       {{ project.title }}
                     </div>
-                    <div>
-                      {{ project.description }}
+                    <div
+                      v-for="(descriptionPargarph,indexParagarph) in project.description"
+                      :key="indexParagarph"
+                    >
+                      <p>{{ descriptionPargarph }}</p>
                     </div>
                     <div>
                       <ul class="summaryList">
@@ -79,6 +82,12 @@
                     </div>
                   </v-flex>
                   <v-flex xs12 sm12 md12 lg8 xl8>
+                    <CoolLightBox
+                      :items="zoomItems"
+                      :index="index"
+                      @close="index = null"
+                      @OnOpen="testBox"
+                    />
                     <v-carousel
                       hide-delimiter-background
                       :cycle="false"
@@ -87,8 +96,8 @@
                       class="carousel"
                     >
                       <v-carousel-item
-                        v-for="(item, i) in project.mediaItems"
-                        :key="i"
+                        v-for="(item, imageIndex) in project.mediaItems"
+                        :key="imageIndex"
                         class="carousel-item"
                       >
                         <div
@@ -116,7 +125,14 @@
                             :aspect-ratio="16 / 9"
                             class="imageContainer"
                             content="Click to zoom the image!"
-                            @click="zoomImage(item.src, iProject)"
+                            @click="
+                              zoomImage(
+                                item.src,
+                                iProject,
+                                imageIndex,
+                                project.mediaItems
+                              )
+                            "
                           />
                         </div>
                       </v-carousel-item>
@@ -136,6 +152,8 @@
 import Vue from "vue"
 import VueTippy, { TippyComponent } from "vue-tippy"
 import "tippy.js/themes/light.css"
+import CoolLightBox from "vue-cool-lightbox"
+import "vue-cool-lightbox/dist/vue-cool-lightbox.min.css"
 
 Vue.use(VueTippy)
 Vue.component("tippy", TippyComponent)
@@ -154,6 +172,9 @@ Vue.use(VueTippy, {
 
 export default {
   name: "TimeProjectCard",
+  components: {
+    CoolLightBox
+  },
   props: {
     projects: {
       type: Array,
@@ -163,16 +184,23 @@ export default {
   data: function() {
     return {
       selectedImage: null,
-      selectedSection: null
+      selectedSection: null,
+      index: null,
+      zoomItems: []
     }
   },
   methods: {
     videoUrl(url) {
-      return `https://www.youtube.com/embed/`+ url
+      return `https://www.youtube.com/embed/` + url
     },
-    zoomImage(url, iProject) {
+    zoomImage(url, iProject, index, items) {
       this.selectedImage = url
       this.selectedSection = iProject
+      this.index = index
+      this.zoomItems = items
+    },
+    testBox() {
+      console.log("Showing up box")
     }
   }
 }
