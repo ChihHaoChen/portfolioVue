@@ -9,25 +9,6 @@
       align-center
     >
       <v-flex xs12 sm12 md12 lg12 xl12>
-        <!-- <div
-          v-if="selectedImage && selectedSection == iProject"
-          max-width="85vw"
-        >
-          <v-img
-            v-tippy="{
-              followCursor: true,
-              interactive: true,
-              arrow: true,
-              arrowType: 'round',
-              size: 'large'
-            }"
-            :src="selectedImage"
-            alt=""
-            width="100%"
-            content="Click again to close the image!"
-            @click.stop="selectedImage = null"
-          />
-        </div> -->
         <v-container class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
@@ -86,7 +67,6 @@
                       :items="zoomItems"
                       :index="index"
                       @close="index = null"
-                      @OnOpen="testBox"
                     />
                     <v-carousel
                       hide-delimiter-background
@@ -198,9 +178,6 @@ export default {
       this.selectedSection = iProject
       this.index = index
       this.zoomItems = items
-    },
-    testBox() {
-      console.log("Showing up box")
     }
   }
 }
