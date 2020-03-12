@@ -1,33 +1,40 @@
 <template>
-  <v-container fluid class="containerSetup">
+  <v-container fluid ma-0 pa-0 class="containerSetup">
     <v-layout
       v-for="(project, iProject) in projects"
       :key="iProject"
       row
-      justify-space-between
       justify-center
       align-center
+      ma-0
+      pa-0
+      fluid
+      class="layoutSetup"
     >
-      <v-flex xs12 sm12 md12 lg12 xl12>
-        <v-container class="timeline-wrapper">
+      <v-flex fluid xs12 sm12 md12 lg12 xl12>
+        <v-container fluid class="timeline-wrapper">
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="iProject != 0" class="card-divider" />
               <div class="bold time">
                 {{ `${project.start} - ${project.end}` }}
               </div>
               <v-container fluid class="card-layout">
                 <v-layout row wrap>
-                  <v-flex xs12 sm12 md12 lg4 xl4 class="left-card">
+                  <v-flex xs12 sm12 md12 lg7 xl7 class="left-card">
                     <div class="card-title">
                       {{ project.title }}
                     </div>
                     <div
-                      v-for="(descriptionPargarph,indexParagarph) in project.description"
+                      v-for="(descriptionPargarph,
+                              indexParagarph) in project.description"
                       :key="indexParagarph"
                     >
-                      <p class="descriptionPara">{{ descriptionPargarph }}</p>
+                      <p class="descriptionPara">
+                        {{ descriptionPargarph }}
+                      </p>
                     </div>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12 lg5 xl5>
                     <div>
                       <ul class="summaryList">
                         <li
@@ -62,66 +69,65 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg8 xl8>
-                    <CoolLightBox
-                      :items="zoomItems"
-                      :index="index"
-                      @close="index = null"
-                    />
-                    <v-carousel
-                      hide-delimiter-background
-                      :cycle="false"
-                      show-arrows-on-hover
-                      show-arrows
-                      class="carousel"
+                  <CoolLightBox
+                    :items="zoomItems"
+                    :index="index"
+                    @close="index = null"
+                  />
+                  <v-carousel
+                    hide-delimiter-background
+                    :cycle="false"
+                    show-arrows-on-hover
+                    show-arrows
+                    class="carousel"
+                  >
+                    <v-carousel-item
+                      v-for="(item, imageIndex) in project.mediaItems"
+                      :key="imageIndex"
+                      class="carousel-item"
                     >
-                      <v-carousel-item
-                        v-for="(item, imageIndex) in project.mediaItems"
-                        :key="imageIndex"
-                        class="carousel-item"
+                      <div
+                        v-if="!(item.videoUrl == undefined)"
+                        class="embed-responsive embed-responsive-16by9 content-wrapper"
                       >
-                        <div
-                          v-if="!(item.videoUrl == undefined)"
-                          class="embed-responsive embed-responsive-16by9 content-wrapper"
-                        >
-                          <iframe
-                            class="iframe-wrapper res-16by9"
-                            width="100%"
-                            height="500"
-                            :src="videoUrl(item.videoUrl)"
-                          />
-                        </div>
-                        <div v-else>
-                          <v-img
-                            v-tippy="{
-                              followCursor: true,
-                              interactive: true,
-                              arrow: true,
-                              arrowType: 'round',
-                              size: 'large'
-                            }"
-                            :src="item.src"
-                            :contain="true"
-                            :aspect-ratio="16 / 9"
-                            class="imageContainer"
-                            content="Click to zoom the image!"
-                            @click="
-                              zoomImage(
-                                item.src,
-                                iProject,
-                                imageIndex,
-                                project.mediaItems
-                              )
-                            "
-                          />
-                        </div>
-                      </v-carousel-item>
-                    </v-carousel>
-                  </v-flex>
+                        <iframe
+                          class="iframe-wrapper res-16by9"
+                          width="100%"
+                          height="500"
+                          :src="videoUrl(item.videoUrl)"
+                        />
+                      </div>
+                      <div v-else>
+                        <v-img
+                          v-tippy="{
+                            followCursor: true,
+                            interactive: true,
+                            arrow: true,
+                            arrowType: 'round',
+                            size: 'large'
+                          }"
+                          :src="item.src"
+                          :contain="true"
+                          :aspect-ratio="16 / 9"
+                          class="imageContainer"
+                          content="Click to zoom the image!"
+                          @click="
+                            zoomImage(
+                              item.src,
+                              iProject,
+                              imageIndex,
+                              project.mediaItems
+                            )
+                          "
+                        />
+                      </div>
+                    </v-carousel-item>
+                  </v-carousel>
                 </v-layout>
               </v-container>
             </li>
           </ul>
+          <hr class="card-divider" >
         </v-container>
       </v-flex>
     </v-layout>
@@ -188,9 +194,16 @@ export default {
   background-color: #dbffc8;
 }
 
+.layoutSetup {
+  background-color: #dbffc8;
+}
+
 .carousel {
   min-height: max-content;
   border: none;
+  box-shadow: none;
+  margin-top: 10px;
+  border-radius: 20px;
 }
 
 .carousel-item {
@@ -211,9 +224,16 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  min-width: 400px;
+  /* min-width: 400px; */
+  width: 100%;
+  position: relative;
   font-family: "Blinker";
   font-size: 20px;
+  margin: 0;
+  padding: 5px;
+  padding-left: 40px;
+  margin-top: 10px;
+  background-color: #dbffc8;
 }
 .StepProgress {
   position: relative;
@@ -253,7 +273,8 @@ export default {
 }
 .card-layout {
   padding-left: 60px;
-  min-height: 600px;
+  min-height: max-content;
+  background-color: #dbffc8;
 }
 .card-item {
   font-size: 20px;
@@ -299,18 +320,17 @@ export default {
   padding-right: 5px;
 }
 .card-divider {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   background-color: transparent;
-  border: 1px solid #006400;
-  width: 95%;
+  border: 2px solid #006400;
+  width: 90%;
   opacity: 0.6;
-  margin-left: 80px;
+  margin-left: 90px;
   margin-right: 80px;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1%;
   border-radius: 50%;
   position: relative;
-  top: 5px;
+  /* top: -50%; */
 }
 
 .imageContainer {
@@ -387,7 +407,7 @@ export default {
   }
 
   .res-16by9 {
-    /* padding-bottom: 56.25%; */
+    padding-bottom: 56.25%;
   }
 
   .iframe-wrapper iframe {

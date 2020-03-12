@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-content fluid>
-      <v-container fluid ma-0 pa-0 fill-height class="topContainer">
+    <v-content fluid pa-0 ma-0>
+      <v-container fluid ma-0 pa-0 fill-height>
         <TimeProjectCard :projects="loadedProjects" class="project-card" />
       </v-container>
     </v-content>
@@ -24,10 +24,6 @@ export default {
 </script>
 
 <style>
-.topContainer {
-  background-color: #dbffc8;
-}
-
 .project-card {
   margin-top: 0px;
   width: 100%;
