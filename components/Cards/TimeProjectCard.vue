@@ -87,17 +87,17 @@
                       :key="imageIndex"
                       class="carousel-item"
                     >
-                      <!-- <div
+                      <div
                         v-if="!(item.videoUrl == undefined)"
                         class="embed-responsive embed-responsive-16by9 content-wrapper"
                       >
                         <iframe
                           class="iframe-wrapper res-16by9"
                           width="100%"
-                          height="500"
+                          height="800"
                           :src="videoUrl(item.videoUrl)"
                         />
-                      </div> -->
+                      </div>
 
                       <v-img
                         v-tippy="{
@@ -107,7 +107,7 @@
                           arrowType: 'round',
                           size: 'large'
                         }"
-                        
+                        else
                         :src="item.src"
                         class="imageContainer"
                         :contain="true"
@@ -129,7 +129,7 @@
               </v-container>
             </li>
           </ul>
-          <hr class="card-divider" >
+          <hr class="card-divider">
         </v-container>
       </v-flex>
     </v-layout>
@@ -331,19 +331,19 @@ export default {
   margin-top: 10px;
   border-radius: 20px;
   /* min-height: max-content; */
-  background-color: blue;
+  /* background-color: blue; */
   padding-bottom: 56.25%;
   position: relative;
 }
 
 .carousel-item {
   border: none;
-  background-color: yellow;
+  /* background-color: yellow; */
   width: 100%;
   height: 100vh;
 }
 .imageContainer {
-  background-color: red;
+  /* background-color: red; */
   padding: 0;
   position: relative;
 }
@@ -354,6 +354,14 @@ export default {
 
 .descriptionPara {
   text-indent: 22px;
+}
+.iframe-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: max-content;
+  border: 0;
+  position: relative;
 }
 
 @media all and (min-width: 0px) and (max-width: 1260px) {
