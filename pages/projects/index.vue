@@ -28,7 +28,6 @@ export default {
   margin-top: 0px;
   width: 100%;
   height: 100%;
-  align-self: center;
   padding-bottom: 0px;
   margin-bottom: 0px;
   position: relative;

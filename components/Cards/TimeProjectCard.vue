@@ -11,8 +11,8 @@
       fluid
       class="layoutSetup"
     >
-      <v-flex fluid xs12 sm12 md12 lg12 xl12>
-        <v-container fluid class="timeline-wrapper">
+      <v-container wrap align-center fluid class="timeline-wrapper">
+        <v-flex fluid xs12 sm12 md12 lg12 xl12>
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
               <div class="bold time">
@@ -129,9 +129,9 @@
               </v-container>
             </li>
           </ul>
-          <hr class="card-divider">
-        </v-container>
-      </v-flex>
+          <hr class="card-divider" />
+        </v-flex>
+      </v-container>
     </v-layout>
   </v-container>
 </template>
@@ -218,7 +218,7 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  width: 100%;
+  max-width: 80vh;
   position: relative;
   font-family: "Blinker";
   font-size: 20px;
@@ -226,7 +226,6 @@ export default {
   padding: 5px;
   padding-left: 40px;
   margin-top: 10px;
-  background-color: #dbffc8;
 }
 .StepProgress {
   position: relative;
@@ -326,24 +325,21 @@ export default {
 .carousel {
   border: none;
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   box-shadow: none;
   margin-top: 10px;
   border-radius: 20px;
-  /* min-height: max-content; */
-  /* background-color: blue; */
   padding-bottom: 56.25%;
   position: relative;
 }
 
 .carousel-item {
   border: none;
-  /* background-color: yellow; */
+  background-color: yellow;
   width: 100%;
   height: 100vh;
 }
 .imageContainer {
-  /* background-color: red; */
   padding: 0;
   position: relative;
 }
