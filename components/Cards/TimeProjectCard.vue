@@ -34,7 +34,7 @@
                       </p>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg5 xl5>
+                  <v-flex xs12 sm12 md12 lg5 xl5 class="right-card">
                     <div>
                       <ul class="summaryList">
                         <li
@@ -74,11 +74,12 @@
                     :index="index"
                     @close="index = null"
                   />
+
                   <v-carousel
-                    hide-delimiter-background
-                    :cycle="false"
+                    hide-delimiters
                     show-arrows-on-hover
                     show-arrows
+                    :cycle="false"
                     class="carousel"
                   >
                     <v-carousel-item
@@ -86,7 +87,7 @@
                       :key="imageIndex"
                       class="carousel-item"
                     >
-                      <div
+                      <!-- <div
                         v-if="!(item.videoUrl == undefined)"
                         class="embed-responsive embed-responsive-16by9 content-wrapper"
                       >
@@ -96,32 +97,33 @@
                           height="500"
                           :src="videoUrl(item.videoUrl)"
                         />
-                      </div>
-                      <div v-else>
-                        <v-img
-                          v-tippy="{
-                            followCursor: true,
-                            interactive: true,
-                            arrow: true,
-                            arrowType: 'round',
-                            size: 'large'
-                          }"
-                          :src="item.src"
-                          :contain="true"
-                          :aspect-ratio="16 / 9"
-                          class="imageContainer"
-                          content="Click to zoom the image!"
-                          @click="
-                            zoomImage(
-                              item.src,
-                              iProject,
-                              imageIndex,
-                              project.mediaItems
-                            )
-                          "
-                        />
-                      </div>
+                      </div> -->
+
+                      <v-img
+                        v-tippy="{
+                          followCursor: true,
+                          interactive: true,
+                          arrow: true,
+                          arrowType: 'round',
+                          size: 'large'
+                        }"
+                        
+                        :src="item.src"
+                        class="imageContainer"
+                        :contain="true"
+                        :aspect-ratio="16 / 9"
+                        content="Click to zoom the image!"
+                        @click="
+                          zoomImage(
+                            item.src,
+                            iProject,
+                            imageIndex,
+                            project.mediaItems
+                          )
+                        "
+                      />
                     </v-carousel-item>
+                    <span class="clearfix" />
                   </v-carousel>
                 </v-layout>
               </v-container>
@@ -198,20 +200,12 @@ export default {
   background-color: #dbffc8;
 }
 
-.carousel {
-  min-height: max-content;
-  border: none;
-  box-shadow: none;
-  margin-top: 10px;
-  border-radius: 20px;
-}
-
-.carousel-item {
-  border: none;
-}
-
 .left-card {
   padding-right: 40px;
+}
+
+.right-card {
+  padding-top: 45px;
 }
 
 .videoContainer {
@@ -224,7 +218,6 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  /* min-width: 400px; */
   width: 100%;
   position: relative;
   font-family: "Blinker";
@@ -320,7 +313,6 @@ export default {
   padding-right: 5px;
 }
 .card-divider {
-  /* margin-top: 10px; */
   background-color: transparent;
   border: 2px solid #006400;
   width: 90%;
@@ -330,11 +322,34 @@ export default {
   margin-top: 1%;
   border-radius: 50%;
   position: relative;
-  /* top: -50%; */
+}
+.carousel {
+  border: none;
+  width: 100vw;
+  /* height: 100vh; */
+  box-shadow: none;
+  margin-top: 10px;
+  border-radius: 20px;
+  /* min-height: max-content; */
+  background-color: blue;
+  padding-bottom: 56.25%;
+  position: relative;
 }
 
+.carousel-item {
+  border: none;
+  background-color: yellow;
+  width: 100%;
+  height: 100vh;
+}
 .imageContainer {
-  object-fit: cover;
+  background-color: red;
+  padding: 0;
+  position: relative;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
 }
 
 .descriptionPara {
@@ -354,7 +369,10 @@ export default {
 
   .left-card {
     padding-right: 0px;
-    padding-bottom: 40px;
+  }
+
+  .right-card {
+    padding-top: 0px;
   }
 
   .StepProgress {
@@ -402,21 +420,13 @@ export default {
     position: relative;
   }
 
-  .res-4by3 {
-    padding-bottom: 75%;
-  }
-
-  .res-16by9 {
-    padding-bottom: 56.25%;
-  }
-
   .iframe-wrapper iframe {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     min-height: max-content;
-    /* height: 100%; */
+    height: 100%;
   }
 }
 </style>
