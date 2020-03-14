@@ -4,7 +4,7 @@
       <v-layout column>
         <v-container fluid ma-0 pa-0 class="cardContainer">
           <v-layout row wrap class="flexContainer">
-            <v-flex xs12 sm12 md12 lg3 xl3>
+            <v-flex xs12 sm12 md12 lg12 x12>
               <v-card fluid color="#dbffc8" class="leftCard">
                 <v-card-title>
                   <h2 class="aboutBanner">
@@ -13,7 +13,7 @@
                 </v-card-title>
               </v-card>
             </v-flex>
-            <v-flex xs12 sm12 md12 lg9 x9>
+            <v-flex xs12 sm12 md12 lg12 x12>
               <v-card color="#dbffc8" class="rightCard">
                 <v-card-text class="aboutMainContent">
                   <div
