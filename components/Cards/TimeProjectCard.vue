@@ -91,9 +91,17 @@
                           />
                         </div>
                         <img
-                          :src="item.src"
                           v-else
+                          v-tippy="{
+                            followCursor: true,
+                            interactive: true,
+                            arrow: true,
+                            arrowType: 'round',
+                            size: 'large'
+                          }"
+                          :src="item.src"
                           class="imageContainer"
+                          content="Click to zoom the image!"
                           @click="
                             zoomImage(
                               item.src,
@@ -119,7 +127,7 @@
               </v-container>
             </li>
           </ul>
-          <hr class="card-divider" />
+          <hr class="card-divider" >
         </v-flex>
       </v-container>
     </v-layout>
@@ -207,11 +215,9 @@ export default {
 .layoutSetup {
   background-color: #dbffc8;
 }
-
 .left-card {
   padding-right: 40px;
 }
-
 .right-card {
   padding-top: 45px;
 }
@@ -330,26 +336,36 @@ export default {
   border-radius: 50%;
   position: relative;
 }
+
 .swiper-wrapper {
   margin-top: 20px;
   width: 100vw;
   min-height: 100%;
   border: none;
 }
+
+.swiper-slide {
+  justify-content: center;
+  align-items: center;
+}
+
 .imageContainer {
   padding: 0;
   position: relative;
   border-radius: 36px;
   width: 100%;
 }
+
 .descriptionPara {
   text-indent: 22px;
 }
+
 .video-container {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
 }
+
 .iframe-wrapper {
   position: absolute;
   top: 0;
@@ -359,10 +375,7 @@ export default {
   border: 0;
   border-radius: 36px;
 }
-.swiper-slide {
-  justify-content: center;
-  align-items: center;
-}
+
 @media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
@@ -394,12 +407,15 @@ export default {
     position: relative;
     counter-increment: list;
   }
+
   .StepProgress-item::before {
     visibility: hidden;
   }
+
   .StepProgress-item::after {
     visibility: hidden;
   }
+  
   .card-divider {
     background-color: transparent;
     border: 1px solid #006400;

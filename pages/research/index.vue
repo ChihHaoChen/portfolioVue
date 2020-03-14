@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-content>
-      <v-container fluid ma-0 pa-0 fill-height class="topContainer">
+    <v-content fluid pa-0 ma-0>
+      <v-container fluid ma-0 pa-0 fill-height>
         <TimeResearchCard
           :publications="loadedPublications"
           class="research-card"
@@ -27,15 +27,10 @@ export default {
 </script>
 
 <style>
-.topContainer {
-  background-color: #dbffc8;
-}
-
 .research-card {
   margin-top: 0px;
   width: 100%;
   height: 100%;
-  align-self: center;
   padding-bottom: 0px;
   margin-bottom: 0px;
   position: relative;

@@ -4,21 +4,23 @@
       v-for="(publication, iResearch) in publications"
       :key="iResearch"
       row
-      justify-space-between
       justify-center
       align-center
+      ma-0
+      pa-0
+      fluid
+      class="layoutSetup"
     >
-      <v-flex xs12 sm12 md12 lg12 xl12>
-        <v-container class="timeline-wrapper">
+      <v-container wrap align-center fluid class="timeline-wrapper">
+        <v-flex fluid xs12 sm12 md12 lg12 xl12>
           <ul class="StepProgress">
             <li class="StepProgress-item" :class="'is-done'">
-              <hr v-if="iResearch != 0" class="card-divider" >
               <div class="bold time">
                 {{ `${publication.start} - ${publication.end}` }}
               </div>
               <v-container fluid class="card-layout">
                 <v-layout row wrap>
-                  <v-flex xs12 sm12 md12 lg4 xl4 class="left-card">
+                  <v-flex xs12 sm12 md12 lg7 xl7 class="left-card">
                     <div class="card-title">
                       {{ publication.title }}
                     </div>
@@ -31,6 +33,8 @@
                         {{ descriptionPargarph }}
                       </p>
                     </div>
+                  </v-flex>
+                  <v-flex xs12 sm12 md12 lg5 xl5 class="right-card">
                     <div>
                       <ul class="summaryList">
                         <li
@@ -73,55 +77,67 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex xs12 sm12 md12 lg8 xl8>
-                    <CoolLightBox
-                      :items="zoomItems"
-                      :index="index"
-                      @close="index = null"
-                    />
-                    <v-carousel
-                      :hide-delimiter-background="true"
-                      :cycle="false"
-                      show-arrows-on-hover
-                      show-arrows
-                    >
-                      <v-carousel-item
+                  <CoolLightBox
+                    :items="zoomItems"
+                    :index="index"
+                    @close="index = null"
+                  />
+                  <div v-swiper="swiperOption" :instanceName="publication.id">
+                    <div class="swiper-wrapper">
+                      <div
                         v-for="(item, imageIndex) in publication.mediaItems"
                         :key="imageIndex"
+                        class="swiper-slide"
                       >
-                        <div>
-                          <v-img
-                            v-tippy="{
-                              followCursor: true,
-                              interactive: true,
-                              arrow: true,
-                              arrowType: 'round',
-                              size: 'large'
-                            }"
-                            :src="item.src"
-                            :contain="true"
-                            :aspect-ratio="16 / 9"
-                            class="imageContainer"
-                            content="Click to zoom the image!"
-                            @click="
-                              zoomImage(
-                                item.src,
-                                iResearch,
-                                imageIndex,
-                                publication.mediaItems
-                              )
-                            "
+                        <div
+                          v-if="!(item.videoUrl == undefined)"
+                          class="video-container"
+                        >
+                          <iframe
+                            class="iframe-wrapper res-16by9"
+                            :src="videoUrl(item.videoUrl)"
                           />
                         </div>
-                      </v-carousel-item>
-                    </v-carousel>
-                  </v-flex>
+                        <img
+                          v-else
+                          v-tippy="{
+                            followCursor: true,
+                            interactive: true,
+                            arrow: true,
+                            arrowType: 'round',
+                            size: 'large'
+                          }"
+                          :src="item.src"
+                          class="imageContainer"
+                          content="Click to zoom the image!"
+                          @click="
+                            zoomImage(
+                              item.src,
+                              iResearch,
+                              imageIndex,
+                              publication.mediaItems
+                            )
+                          "
+                        >
+                      </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-bullets" />
+                    <div
+                      slot="button-prev"
+                      class="swiper-button-prev swiper-button-white"
+                    />
+                    <div
+                      slot="button-next"
+                      class="swiper-button-next swiper-button-white"
+                    />
+                  </div>
                 </v-layout>
               </v-container>
             </li>
           </ul>
-        </v-container>
-      </v-flex>
+          <hr class="card-divider">
+        </v-flex>
+      </v-container>
     </v-layout>
   </v-container>
 </template>
@@ -164,10 +180,31 @@ export default {
       selectedImage: null,
       selectedSection: null,
       index: null,
-      zoomItems: []
+      zoomItems: [],
+      swiperOption: {
+        loop: true,
+        autoHeight: true,
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 30,
+        effect: "fade",
+        allowTouchMove: false,
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: false,
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
     }
   },
   methods: {
+    videoUrl(url) {
+      return `https://www.youtube.com/embed/` + url
+    },
     loadPDF(event, id, url) {
       this.$router.push({
         path: "/research/" + id + "/pdf",
@@ -190,12 +227,20 @@ export default {
   background-color: #dbffc8;
 }
 
-.carousel {
-  min-height: max-content;
+.layoutSetup {
+  background-color: #dbffc8;
 }
 
 .left-card {
   padding-right: 40px;
+}
+
+.right-card {
+  padding-top: 45px;
+}
+
+.videoContainer {
+  position: relative;
 }
 
 .time {
@@ -204,9 +249,14 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  min-width: 400px;
+  max-width: 80vh;
+  position: relative;
   font-family: "Blinker";
   font-size: 20px;
+  margin: 0;
+  padding: 5px;
+  padding-left: 40px;
+  margin-top: 10px;
 }
 .StepProgress {
   position: relative;
@@ -246,7 +296,8 @@ export default {
 }
 .card-layout {
   padding-left: 60px;
-  min-height: 600px;
+  min-height: max-content;
+  background-color: #dbffc8;
 }
 .card-item {
   font-size: 20px;
@@ -292,28 +343,55 @@ export default {
   padding-right: 5px;
 }
 .card-divider {
-  margin-top: 10px;
   background-color: transparent;
-  border: 1px solid #006400;
-  width: 95%;
+  border: 2px solid #006400;
+  width: 90%;
   opacity: 0.6;
-  margin-left: 80px;
+  margin-left: 90px;
   margin-right: 80px;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1%;
   border-radius: 50%;
   position: relative;
-  top: 5px;
+}
+
+.swiper-wrapper {
+  margin-top: 20px;
+  width: 100vw;
+  min-height: 100%;
+  border: none;
+}
+
+.swiper-slide {
+  justify-content: center;
+  align-items: center;
 }
 
 .imageContainer {
-  object-fit: cover;
+  padding: 0;
+  position: relative;
+  border-radius: 36px;
+  width: 100%;
 }
 
 .descriptionPara {
   text-indent: 22px;
 }
 
+.video-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 36px;
+}
 @media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
@@ -327,8 +405,12 @@ export default {
 
   .left-card {
     padding-right: 0px;
-    padding-bottom: 40px;
   }
+
+  .right-card {
+    padding-top: 0px;
+  }
+
   .StepProgress {
     position: relative;
     padding-left: 0px;
@@ -337,16 +419,20 @@ export default {
     -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
     transition: 2s;
   }
+
   .StepProgress-item {
     position: relative;
     counter-increment: list;
   }
+
   .StepProgress-item::before {
     visibility: hidden;
   }
+
   .StepProgress-item::after {
     visibility: hidden;
   }
+
   .card-divider {
     background-color: transparent;
     border: 1px solid #006400;
@@ -359,10 +445,6 @@ export default {
     border-radius: 50%;
     position: relative;
     top: 5px;
-  }
-  .content-wrapper {
-    max-width: 900px;
-    margin: 0 0 0 0;
   }
 }
 </style>
