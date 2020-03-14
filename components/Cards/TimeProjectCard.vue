@@ -74,57 +74,47 @@
                     :index="index"
                     @close="index = null"
                   />
-
-                  <v-carousel
-                    hide-delimiters
-                    show-arrows-on-hover
-                    show-arrows
-                    :cycle="false"
-                    class="carousel"
-                  >
-                    <v-carousel-item
-                      v-for="(item, imageIndex) in project.mediaItems"
-                      :key="imageIndex"
-                      class="carousel-item"
-                    >
+                  <div v-swiper="swiperOption" :instanceName="project.id">
+                    <div class="swiper-wrapper">
                       <div
-                        v-if="!(item.videoUrl == undefined)"
-                        class="embed-responsive embed-responsive-16by9 content-wrapper"
+                        v-for="(item, imageIndex) in project.mediaItems"
+                        :key="imageIndex"
+                        class="swiper-slide"
                       >
-                        <iframe
-                          class="iframe-wrapper res-16by9"
-                          width="100%"
-                          height="800"
-                          :src="videoUrl(item.videoUrl)"
-                        />
+                        <div
+                          v-if="!(item.videoUrl == undefined)"
+                          class="video-container"
+                        >
+                          <iframe
+                            class="iframe-wrapper res-16by9"
+                            :src="videoUrl(item.videoUrl)"
+                          />
+                        </div>
+                        <img
+                          :src="item.src"
+                          v-else
+                          class="imageContainer"
+                          @click="
+                            zoomImage(
+                              item.src,
+                              iProject,
+                              imageIndex,
+                              project.mediaItems
+                            )
+                          "
+                        >
                       </div>
-
-                      <v-img
-                        v-tippy="{
-                          followCursor: true,
-                          interactive: true,
-                          arrow: true,
-                          arrowType: 'round',
-                          size: 'large'
-                        }"
-                        else
-                        :src="item.src"
-                        class="imageContainer"
-                        :contain="true"
-                        :aspect-ratio="16 / 9"
-                        content="Click to zoom the image!"
-                        @click="
-                          zoomImage(
-                            item.src,
-                            iProject,
-                            imageIndex,
-                            project.mediaItems
-                          )
-                        "
-                      />
-                    </v-carousel-item>
-                    <span class="clearfix" />
-                  </v-carousel>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-bullets" />
+                    <div
+                      slot="button-prev"
+                      class="swiper-button-prev swiper-button-white"
+                    />
+                    <div
+                      slot="button-next"
+                      class="swiper-button-next swiper-button-white"
+                    />
+                  </div>
                 </v-layout>
               </v-container>
             </li>
@@ -174,7 +164,25 @@ export default {
       selectedImage: null,
       selectedSection: null,
       index: null,
-      zoomItems: []
+      zoomItems: [],
+      swiperOption: {
+        loop: true,
+        autoHeight: true,
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 30,
+        effect: "fade",
+        allowTouchMove: false,
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: false,
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
     }
   },
   methods: {
@@ -322,44 +330,39 @@ export default {
   border-radius: 50%;
   position: relative;
 }
-.carousel {
-  border: none;
+.swiper-wrapper {
+  margin-top: 20px;
   width: 100vw;
-  height: 100vh;
-  box-shadow: none;
-  margin-top: 10px;
-  border-radius: 20px;
-  padding-bottom: 56.25%;
-  position: relative;
-}
-
-.carousel-item {
+  min-height: 100%;
   border: none;
-  background-color: yellow;
-  width: 100%;
-  height: 100vh;
 }
 .imageContainer {
   padding: 0;
   position: relative;
+  border-radius: 36px;
+  width: 100%;
 }
-.clearfix:after {
-  content: "";
-  clear: both;
-}
-
 .descriptionPara {
   text-indent: 22px;
 }
+.video-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
 .iframe-wrapper {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: max-content;
+  height: 100%;
   border: 0;
-  position: relative;
+  border-radius: 36px;
 }
-
+.swiper-slide {
+  justify-content: center;
+  align-items: center;
+}
 @media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
@@ -409,28 +412,6 @@ export default {
     border-radius: 50%;
     position: relative;
     top: 5px;
-  }
-  .content-wrapper {
-    max-width: 900px;
-    margin: 0 0 0 0;
-  }
-
-  .iframe-wrapper {
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: max-content;
-    border: 0;
-    position: relative;
-  }
-
-  .iframe-wrapper iframe {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: max-content;
-    height: 100%;
   }
 }
 </style>
