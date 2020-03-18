@@ -369,18 +369,23 @@ export default {
 .imageContainer {
   padding: 0;
   position: relative;
-  border-radius: 36px;
+  border-radius: 16px;
   width: 100%;
 }
 
 .descriptionPara {
-  text-indent: 22px;
+  text-indent: 18px;
+  display: inline-block;
 }
 
 .video-container {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  perspective: 1px;
 }
 
 .iframe-wrapper {
@@ -390,14 +395,26 @@ export default {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 36px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  overflow: hidden;
 }
+
 @media all and (min-width: 0px) and (max-width: 1260px) {
   .time {
     position: relative;
     left: 0px;
     top: 0px;
   }
+
+  .timeline-wrapper {
+    max-width: 95%;
+    margin: 0;
+    padding: 0;
+    margin-left: 5%;
+  }
+
   .card-layout {
     padding-left: 0px;
     min-height: 600px;
@@ -426,11 +443,14 @@ export default {
   }
 
   .StepProgress-item::before {
-    visibility: hidden;
+    left: -12px;
+    border-left: 2px solid green;
+    top: 15px;
   }
 
   .StepProgress-item::after {
-    visibility: hidden;
+    left: -17px;
+    top: 10px;
   }
 
   .card-divider {

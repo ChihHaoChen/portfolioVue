@@ -425,14 +425,12 @@ export default {
   }
 
   .StepProgress-item::before {
-    /* visibility: hidden; */
     left: -12px;
     border-left: 2px solid green;
     top: 15px;
   }
 
   .StepProgress-item::after {
-    /* visibility: hidden; */
     left: -17px;
     top: 10px;
   }

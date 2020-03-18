@@ -39,11 +39,6 @@ export default {
       ]
     }
   },
-  computed: {
-    totalBackgroundImages() {
-      return this.images.length
-    }
-  },
   methods: {
     backgroundClass(profile) {
       return {
