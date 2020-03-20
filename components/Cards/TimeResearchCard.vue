@@ -19,11 +19,11 @@
                 {{ `${publication.start} - ${publication.end}` }}
               </div>
               <v-container fluid class="card-layout">
+                <div class="card-title">
+                  {{ publication.title }}
+                </div>
                 <v-layout row wrap>
                   <v-flex xs12 sm12 md12 lg7 xl7 class="left-card">
-                    <div class="card-title">
-                      {{ publication.title }}
-                    </div>
                     <div
                       v-for="(descriptionPargarph,
                               indexParagarph) in publication.description"
@@ -49,10 +49,11 @@
                     <div class="text-center">
                       <v-btn
                         class="detail-btn"
-                        color="#006400"
                         @click="loadPDF($event, i, publication.pdfLink)"
+                        color="#006400"
                       >
-                        Details
+                        PDF
+                        <span />
                       </v-btn>
                       <v-btn
                         v-if="!(publication.detailLink == undefined)"
@@ -60,7 +61,8 @@
                         :href="publication.detailLink"
                         color="#006400"
                       >
-                        Published Info
+                        DETAILS
+                        <span />
                       </v-btn>
                     </div>
                     <div class="tech-title">
@@ -236,7 +238,7 @@ export default {
 }
 
 .right-card {
-  padding-top: 45px;
+  padding-top: 0x;
 }
 
 .videoContainer {
@@ -249,7 +251,9 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  max-width: 80vh;
+  max-width: 1980px;
+  min-width: 700px;
+  width: 80%;
   position: relative;
   font-family: "Blinker";
   font-size: 20px;
@@ -295,9 +299,14 @@ export default {
   border: 2px solid green;
 }
 .card-layout {
-  padding-left: 60px;
+  padding-left: 20px;
   min-height: max-content;
   background-color: #dbffc8;
+  max-width: 1920px;
+  min-width: 640px;
+  width: 95%;
+  margin-left: 40px;
+  position: relative;
 }
 .card-item {
   font-size: 20px;
@@ -322,12 +331,49 @@ export default {
   margin-inline: 5px;
   margin-left: 0px;
 }
+
 .detail-btn {
-  font-size: 16px;
+  font-size: 20px;
+  font-family: "Blinker";
   color: white;
-  margin-left: 0px;
-  border-radius: 5px;
+  display: inline-flexbox;
+  width: 120px;
+  height: 40px;
+  border-radius: 6px;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 1px;
 }
+
+.detail-btn span {
+  cursor: pointer;
+  display: inline-flexblock;
+  transition: 0.5s;
+  position: relative;
+  margin-left: -15px;
+  margin-right: 8px;
+}
+
+.detail-btn span:after {
+  content: '\00bb';
+  position: relative;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.detail-btn:hover span {
+  padding-left: 25px;
+}
+
+.detail-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 .summaryList {
   list-style: none;
   margin-left: 0;
@@ -409,15 +455,19 @@ export default {
   }
 
   .timeline-wrapper {
-    max-width: 95%;
+    max-width: 1260px;
+    width: 90%;
     margin: 0;
     padding: 0;
     margin-left: 5%;
+    padding-right: 5%;
   }
 
   .card-layout {
     padding-left: 0px;
+    margin-left: 10px;
     min-height: 600px;
+    width: 100%;
   }
 
   .left-card {
