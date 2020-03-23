@@ -49,7 +49,7 @@
                     <div class="text-center">
                       <v-btn
                         class="detail-btn"
-                        @click="loadPDF($event, i, publication.pdfLink)"
+                        @click="loadPDF($event, iResearch, publication.pdfLink)"
                         color="#006400"
                       >
                         PDF
