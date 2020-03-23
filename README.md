@@ -1,4 +1,4 @@
-<h1 align="center">portfolioVue - Open Source Project for Portfolio Websites</h1>
+<h3 align="center">portfolioVue - Open Source Project for Portfolio Websites</h3>
 
 <p align="center">
 <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue.js-orange.svg?style=flat" alt="Swift"/></a>
@@ -26,7 +26,7 @@ Although there are some good options about building one's own portfolio website,
 - Résumé;
 - About.
 
-# Projects
+### Projects
 Inside this category, you can order your projects in either a chronological order or an inverse chronological order. Each project includes the descriptions, the summary points, as well as the technology you've used for development. There is a detail button that guides viewers to anther webpage for further details or the App store and the Google Play store if for mobile App. The least but the most important to include is the screenshots or the images that can be used to expalin your work. Videos can also be included in the carousel gallery by appending the video URL to the JSON database. Here is the JSON format for projects.
 
 ```yaml
