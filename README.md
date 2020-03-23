@@ -74,7 +74,7 @@ Inside this category, you can order your projects in either a chronological orde
     }],
     "id" : 0
   }, {
-  	"description" : [
+  "description" : [
       "Project1_description0",
       "Project1_description1"
     ],
@@ -206,6 +206,33 @@ If you do no need this research section, you can just remove it from the codebas
   }
 
 ```
+
+### Résumé and About
+As for the résumé, you can just replace this with your file in PDF format. For the *About* section, you can also leave the descriptions in arrays among which each item gets displayed in paragraph. The following is the JSON format to pupulate all the info.
+
+```yaml
+"profile" : {
+    "introductionBackgroundImage" : "The URL link associated with the background image of the landing page",
+    "introductionTitle" : "Your title0 | Your title1",
+    "introductionName" : "Hi, I'm (your name),",
+    "avatarUrl" : "The URL link of your avatar image",
+    "email" : "Your email",
+    "gitHubLink" : "Your github URL link",
+    "linkedInLink" : "Your Linkedin link",
+    "name" : "Your name in the navigation bar",
+    "positionTitle" : "Your title in the navigation bar",
+    "resumePDF" : "The URL link of your résumé PDF",
+    "aboutMeContent": [
+      "Description0 of self-introduction",
+      "Description1 of self-introduction",
+      "Description2 of self-introduction",
+      "Description3 of self-introduction"
+    ],
+    "aboutImages": "The URL link of the image that you'd like to show to your potential employer"
+  }
+
+```
+
 ## Build Setup
 
 ``` bash
