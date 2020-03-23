@@ -8,14 +8,14 @@
 </p>
 
 <p align="center">
-<img src="Resources/screenshotPortfolioVueCornered-min.png" alt="Screenshots of the portfolio website">
+<img src="resources/screenshotPortfolioVueCornered-min.png" alt="Screenshots of the portfolio website">
 </p>
 
 
 ## About the project
 This project is developed mainly with Vue.js. The generated HTML files are deployed under [my GitHub account](https://chihhaochen.github.io/). My initial purpose of building this website with JS is to separate the front-end development from the back-end database, so anyone can reuse my repository to build up their portfolio website by configuring their API calls and populating their back-end database.
 
-The database is in JSON format deployed in Firebase, while all the images and PDF files are stored in Amazon S3. Once the API data gets fetched, Vuex, a well-known framework for state management, is exploited to mutate the state variables associated with the database data. The Nuxt framework has been embedded in this repository for SPA (Single Page Application). Finally, as for the UI components, Vuetify is used for the material design of this portfolio side-project. This website is also compatible with popular browsers in mobile devices.
+> The database is in JSON format deployed in Firebase, while all the images and PDF files are stored in Amazon S3. Once the API data gets fetched, Vuex, a well-known framework for state management, is exploited to mutate the state variables associated with the database data. The Nuxt framework has been embedded in this repository for SPA (Single Page Application). Finally, as for the UI components, Vuetify is used for the material design of this portfolio side-project. This website is also compatible with popular browsers in mobile devices.
 
 ## Build Setup
 
