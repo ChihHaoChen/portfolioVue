@@ -233,9 +233,9 @@ As for the résumé, you can just replace this with your file in PDF format. For
 After you get the above three JSON pieces ready, you could combine them into a standalone JSON file with
 ```yaml
 {
-	"profile" : { ... },
-	"projects" : { ... },
-	"publication" : { ... }
+"profile" : { ... },
+"projects" : { ... },
+"publication" : { ... }
 }
 ```
 , where each of them is corresponding to the above three big chunks. Once this JSON file is ready, you can upload it to some cloud platforms to allow the JSON file to be downloaded and injected into the static HTML files in a later stage. The last step is to change the lines in *nuxt.config.js*
