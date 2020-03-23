@@ -17,6 +17,64 @@ This project is developed mainly with Vue.js. The generated HTML files are deplo
 
 > The database is in JSON format deployed in Firebase, while all the images and PDF files are stored in Amazon S3. Once the API data gets fetched, Vuex, a well-known framework for state management, is exploited to mutate the state variables associated with the database data. The Nuxt framework has been embedded in this repository for SPA (Single Page Application). Finally, as for the UI components, Vuetify is used for the material design of this portfolio side-project. This website is also compatible with popular browsers in mobile devices.
 
+
+## Goals of this project
+Although there are some good options about building one's own portfolio website, since I am gaining skills to be a developer, spending sometime on studying new technology for Web applications sounds fun to me. Also there is no better tool than doing a practical project when considering learning new programming languages. The other primary motivation to build this portfolio is to separate the frond-end development from the back-end database. Hopefully, with this approach, this project could be of some help to the junior developers who want to demonstrate their work to their potential employers. This portfolio covers four main aspects I'd like to present:
+
+- Projects; 
+- Research;
+- Résumé;
+- About.
+
+# Projects
+Inside this category, you can order your projects in either a chronological order or an inverse chronological order. Each project includes the descriptions, the summary points, as well as the technology you've used for development. There is a detail button that guides viewers to anther webpage for further details or the App store and the Google Play store if for mobile App. The least but the most important to include is the screenshots or the images that can be used to expalin your work. Videos can also be included in the carousel gallery by appending the video URL to the JSON database. Here is the JSON format for projects.
+
+```yaml
+{
+    "description" : [
+      "Description1",
+      "Description2"
+    ],
+    "detailLink" : "URL of the webpage that shows further details of your project",
+    "end" : "Time of the end of the project",
+    "start" : "Time of the start of the project",
+    "summary" : {
+      "header" : "currently not used, but it may be used to show the category of the project",
+      "points" : [ {
+        "text" : "Summary point1",
+        "textid" : 0
+      }, {
+        "text" : "Summary point2",
+        "textid" : 1
+      }, {
+        "text" : "Summary point3",
+        "textid" : 2
+      }, {
+        "text" : "Summary point4",
+        "textid" : 3
+      }]
+    },
+    "technologies" : [ {
+      "item" : "JavaScript"
+    }, {
+      "item" : "Swift"
+      }, {
+      "item" : "Object-C"
+       }, {
+      "item" : "Python"
+    } ],
+    "title" : "Your project title",
+    "mediaItems": [{
+      "src": "URL of the first image"
+    }, {
+      "src": "URL of the second image"
+    }, {
+      "src": "The link of the Youtube video for sharing it, for example, https://www.youtube.com/embed/j9I0PxhExQM",
+      "videoUrl": "the last bit of the link, for example from the above case, j9I0PxhExQM"
+    }],
+    "id" : 0
+  }
+
 ## Build Setup
 
 ``` bash
