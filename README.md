@@ -204,7 +204,6 @@ If you do no need this research section, you can just remove it from the codebas
       "src": "URL of the image3 of topic1"
     }]
   }
-
 ```
 
 ### Résumé and About
@@ -230,8 +229,25 @@ As for the résumé, you can just replace this with your file in PDF format. For
     ],
     "aboutImages": "The URL link of the image that you'd like to show to your potential employer"
   }
-
 ```
+After you get the above three JSON pieces ready, you could combine them into a standalone JSON file with
+```yaml
+{
+	"profile" : { ... },
+	"projects" : { ... },
+	"publication" : { ... }
+}
+```
+, where each of them is corresponding to the above three big chunks. Once this JSON file is ready, you can upload it to some cloud platforms to allow the JSON file to be downloaded and injected into the static HTML files in a later stage. The last step is to change the lines in *nuxt.config.js*
+```
+env: {
+    PUBLICATIONURL:
+      "https://{your project name}.firebaseio.com/publications.json",
+    PROFILEURL: "https://{your project name}.firebaseio.com/profile.json",
+    PROJECTSURL: "https://{your project name}.firebaseio.com/projects.json"
+  }
+```
+, and then perform the following build steps.
 
 ## Build Setup
 
@@ -251,3 +267,5 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+Once you get the static HTML files, then you should be good to go.
