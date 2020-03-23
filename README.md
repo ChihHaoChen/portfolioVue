@@ -30,27 +30,27 @@ Although there are some good options about building one's own portfolio website,
 Inside this category, you can order your projects in either a chronological order or an inverse chronological order. Each project includes the descriptions, the summary points, as well as the technology you've used for development. There is a detail button that guides viewers to anther webpage for further details or the App store and the Google Play store if for mobile App. The least but the most important to include is the screenshots or the images that can be used to expalin your work. Videos can also be included in the carousel gallery by appending the video URL to the JSON database. Here is the JSON format for projects.
 
 ```yaml
-{
+"projects" : [ {
     "description" : [
-      "Description1",
-      "Description2"
+      "Project0_description0",
+      "Project0_description1"
     ],
     "detailLink" : "URL of the webpage that shows further details of your project",
-    "end" : "Time of the end of the project",
-    "start" : "Time of the start of the project",
+    "end" : "Time of the end of the project0",
+    "start" : "Time of the start of the project0",
     "summary" : {
       "header" : "currently not used, but it may be used to show the category of the project",
       "points" : [ {
-        "text" : "Summary point1",
+        "text" : "Summary point1 of Project0",
         "textid" : 0
       }, {
-        "text" : "Summary point2",
+        "text" : "Summary point2 of Project0",
         "textid" : 1
       }, {
-        "text" : "Summary point3",
+        "text" : "Summary point3 of Project0",
         "textid" : 2
       }, {
-        "text" : "Summary point4",
+        "text" : "Summary point4 of Project0",
         "textid" : 3
       }]
     },
@@ -65,16 +65,59 @@ Inside this category, you can order your projects in either a chronological orde
     } ],
     "title" : "Your project title",
     "mediaItems": [{
-      "src": "URL of the first image"
+      "src": "URL of the first image of Project0"
     }, {
-      "src": "URL of the second image"
+      "src": "URL of the second image of Project0"
     }, {
       "src": "The link of the Youtube video for sharing it, for example, https://www.youtube.com/embed/j9I0PxhExQM",
       "videoUrl": "the last bit of the link, for example from the above case, j9I0PxhExQM"
     }],
     "id" : 0
-  }
+  }, {
+  	"description" : [
+      "Project1_description0",
+      "Project1_description1"
+    ],
+    "detailLink" : "URL of the webpage that shows further details of your project",
+    "end" : "Time of the end of the project1",
+    "start" : "Time of the start of the project1",
+    "summary" : {
+      "header" : "currently not used, but it may be used to show the category of the project",
+      "points" : [ {
+        "text" : "Summary point1 of Project1",
+        "textid" : 0
+      }, {
+        "text" : "Summary point2 of Project1",
+        "textid" : 1
+      }, {
+        "text" : "Summary point3 of Project1",
+        "textid" : 2
+      }, {
+        "text" : "Summary point4 of Project1",
+        "textid" : 3
+      }]
+    },
+    "technologies" : [ {
+      "item" : "Ruby"
+    }, {
+      "item" : "Python"
+      }, {
+      "item" : "Java"
+    } ],
+    "title" : "Your project title",
+    "mediaItems": [{
+      "src": "URL of the first image of Project1"
+    }, {
+      "src": "URL of the second image of Project1"
+    }, {
+      "src": "The link of the Youtube video for sharing it, for example, https://www.youtube.com/embed/j9I0PxhExQM",
+      "videoUrl": "the last bit of the link, for example from the above case, j9I0PxhExQM"
+    }],
+    "id" : 1
+ }]
 
+
+```
 ## Build Setup
 
 ``` bash
