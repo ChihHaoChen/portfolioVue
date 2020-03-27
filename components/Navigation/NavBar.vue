@@ -48,7 +48,7 @@
               <nuxt-link to="/research"><span />RESEARCH</nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link to="/cv"><span />MY RÉSUMÉ</nuxt-link>
+              <nuxt-link to="/cv"><span />RÉSUMÉ</nuxt-link>
             </li>
             <li class="nav-item">
               <nuxt-link to="/about"><span />ABOUT</nuxt-link>
