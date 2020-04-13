@@ -14,7 +14,7 @@ export default {
       this.loading = true
     },
     finish() {
-      this.loading = false
+      this.loading = true
     }
   }
 }

@@ -58,7 +58,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["swiper/dist/css/swiper.css"],
+  css: ["swiper/dist/css/swiper.css", "~/assets/style/main.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -90,5 +90,9 @@ export default {
       "https://portfoliovue-6c2b7.firebaseio.com/publications.json",
     PROFILEURL: "https://portfoliovue-6c2b7.firebaseio.com/profile.json",
     PROJECTSURL: "https://portfoliovue-6c2b7.firebaseio.com/projects.json"
+  },
+  transition: {
+    name: "fade",
+    mode: "out-in"
   }
 }
