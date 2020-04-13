@@ -236,7 +236,6 @@ export default {
 }
 .timeline-wrapper {
   max-width: 1980px;
-  min-width: 700px;
   width: 80%;
   position: relative;
   font-family: "Blinker";
@@ -287,7 +286,6 @@ export default {
   min-height: max-content;
   background-color: #dbffc8;
   max-width: 1920px;
-  min-width: 640px;
   width: 95%;
   margin-left: 40px;
   position: relative;
@@ -439,7 +437,7 @@ export default {
   }
 
   .timeline-wrapper {
-    max-width: 1260px;
+    max-width: 95%;
     width: 90%;
     margin: 0;
     padding: 0;
