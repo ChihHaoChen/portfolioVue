@@ -429,7 +429,7 @@ export default {
   overflow: hidden;
 }
 
-@media all and (min-width: 0px) and (max-width: 1260px) {
+@media all and (min-width: 0px) and (max-width: 1600px) {
   .time {
     position: relative;
     left: 0px;

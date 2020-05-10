@@ -238,7 +238,7 @@ export default {
 }
 
 .right-card {
-  padding-top: 0x;
+  padding-top: 0;
 }
 
 .videoContainer {
@@ -445,7 +445,7 @@ export default {
   overflow: hidden;
 }
 
-@media all and (min-width: 0px) and (max-width: 1260px) {
+@media all and (min-width: 0px) and (max-width: 1600px) {
   .time {
     position: relative;
     left: 0px;
@@ -453,7 +453,7 @@ export default {
   }
 
   .timeline-wrapper {
-    max-width: 1260px;
+    max-width: 95%;
     width: 90%;
     margin: 0;
     padding: 0;

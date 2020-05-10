@@ -29,7 +29,7 @@ export default {
   methods: {
     getPDFPath() {
       if (!this.isMobile) {
-        return this.url
+        return this.url + "#page=1&view=FitH&zoom=100"
       } else {
         return (
           "https://docs.google.com/viewer?url=" + this.url + "&embedded=true"
@@ -51,15 +51,12 @@ export default {
 }
 
 .iframe-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 16px;
-  -webkit-border-radius: 16px;
-  -moz-border-radius: 16px;
-  overflow: scroll;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
 }
 </style>
