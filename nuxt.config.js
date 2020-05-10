@@ -15,10 +15,10 @@ export default {
       if (isDev) config.mode = "development"
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        from: "@/node_modules/pdfjs-dist/build/pdf.worker.js",
-        to: "pdf.worker.js"
-      }),
+      // new webpack.ProvidePlugin({
+      //   from: "@/node_modules/pdfjs-dist/build/pdf.worker.js",
+      //   to: "pdf.worker.js"
+      // }),
       new webpack.NamedModulesPlugin()
     ],
     loading: "~/components/loading.vue"

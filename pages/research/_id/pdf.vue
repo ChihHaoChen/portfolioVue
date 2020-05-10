@@ -1,33 +1,60 @@
 <template>
-	<v-app>
-		<v-content fluid class=pdf-card>
-			<PDFViewer
-				v-bind="{url}"
-				@document-errored="onDocumentErrored"
-				>
-			</PDFViewer>
-		</v-content>
-	</v-app>
+  <v-app>
+    <iframe
+      :src="getPDFPath()"
+      class="iframe-wrapperb"
+      style="width: 100vw;
+    height: 100%;"
+    />
+  </v-app>
 </template>
 
 <script>
-import PDFViewer from '@/components/PDF/PDFViewer.vue'
-	
 export default {
-  components: {
-    PDFViewer
-	},
   data() {
     return {
-	    url: String(this.$store.getters.loadPDF),
+      url: String(this.$store.getters.loadPDF),
       documentError: undefined,
-      enableUploader: process.env.VUE_APP_UPLOAD_ENABLED === 'true',
-    };
-	},
+      enableUploader: process.env.VUE_APP_UPLOAD_ENABLED === "true",
+      isMobile: false
+    }
+  },
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.onResize, { passive: true })
+    }
+  },
+  mounted() {
+    this.onResize()
+    window.addEventListener("resize", this.onResize, { passive: true })
+  },
   methods: {
-    onDocumentErrored(e) {
-      this.documentError = e.text;
+    getPDFPath() {
+      if (!this.isMobile) {
+        return this.url
+      } else {
+        return (
+          "https://docs.google.com/viewer?url=" + this.url + "&embedded=true"
+        )
+      }
+    },
+    onResize() {
+      this.isMobile = window.innerWidth < 1260
+      this.$bus.$emit("controlHeader", this.isMobile)
     }
   }
 }
 </script>
+
+<style scoped>
+.iframe-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  overflow: scroll;
+}
+</style>

@@ -10,7 +10,7 @@
             align-center
             justify-center
           >
-            <img :src="profile.avatarUrl" alt="" />
+            <img :src="profile.avatarUrl" alt="" >
           </v-avatar>
           <p class="text-under-avatar">
             {{ profile.name }}
@@ -41,13 +41,13 @@
         <v-divider dark />
         <v-layout row align-center justify-center class="icon-bar">
           <a :href="email">
-            <img src="@/assets/images/email.png" />
+            <img src="@/assets/images/email.png" >
           </a>
           <a :href="profile.linkedInLink">
-            <img src="@/assets/images/linkedin-box.png" />
+            <img src="@/assets/images/linkedin-box.png" >
           </a>
           <a :href="profile.gitHubLink">
-            <img src="@/assets/images/github-box.png" />
+            <img src="@/assets/images/github-box.png" >
           </a>
           <v-spacer />
         </v-layout>
@@ -75,7 +75,6 @@ export default {
       email: "mailto:" + this.profile.email
     }
   },
-
   beforeDestroy() {
     if (typeof window !== "undefined") {
       window.removeEventListener("resize", this.onResize, { passive: true })
