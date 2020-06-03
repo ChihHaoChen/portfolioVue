@@ -29,7 +29,7 @@ export default {
   methods: {
     getPDFPath() {
       if (!this.isMobile) {
-        return this.url + "#page=1&view=FitH&zoom=100"
+        return this.url + "#page=1&view=FitW&zoom=100"
       } else {
         return (
           "https://docs.google.com/viewer?url=" + this.url + "&embedded=true"
