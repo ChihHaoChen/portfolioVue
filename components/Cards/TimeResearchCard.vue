@@ -251,14 +251,15 @@ export default {
   top: -10px;
 }
 .timeline-wrapper {
-  max-width: 1980px;
-  width: 80%;
+  max-width: 1600px;
+  width: 75%;
   position: relative;
   font-family: "Blinker";
   font-size: 20px;
-  margin: 0;
-  padding: 5px;
-  padding-left: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5%;
+  padding-left: 10%;
   margin-top: 10px;
 }
 .StepProgress {
@@ -453,12 +454,12 @@ export default {
   }
 
   .timeline-wrapper {
-    max-width: 95%;
+    max-width: 90%;
     width: 90%;
     margin: 0;
     padding: 0;
-    margin-left: 5%;
-    padding-right: 5%;
+    margin-left: 10%;
+    margin-right: 5%;
   }
 
   .card-layout {
